@@ -222,3 +222,47 @@
     <img src="gl-logo.jpg" alt="G&L Studios Logo" style="max-width: 300px; height: auto;">
   </a>
 </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G&L Studios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      color: gold;
+      text-shadow: 0 0 10px gold, 0 0 20px orange, 0 0 30px red;
+    }
+    a {
+      color: gold;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .logo img {
+      max-width: 300px;
+      height: auto;
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 10px gold) drop-shadow(0 0 20px orange);
+    }
+  </style>
+</head>
+<body>
+  <div class="logo" style="margin: 20px 0;">
+    <a href="https://shadowrealms.github.io/">
+      <img src="gl-logo.jpg" alt="G&L Studios Logo">
+    </a>
+  </div>
+  <h1>Welcome to G&L Studios</h1>
+</body>
