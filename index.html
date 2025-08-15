@@ -1,145 +1,113 @@
-<!-- Book Links Section -->
-<div class="book-links">
-  <h2>Our Books</h2>
-  <ul>
-    <li><a href="book1.html">📖 ShadowFlame: The Forbidden City</a></li>
-    <li><a href="book2.html">📖 ShadowRealms: The Whispering Ember</a></li>
-  </ul>
-</div>
-<!-- Book Links Section -->
-<div class="book-links">
-    <h2>Our Books</h2>
-    <ul>
-        <li><a href="book1.html">ShadowFlame: The Forbidden City</a></li>
-        <li><a href="book2.html">ShadowRealms: Mist of the Forged</a></li>
-    </ul>
-</div>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GE&LE Studios — ShadowRealms</title>
-  <meta name="description" content="Epic worlds. Real hearts. GE&LE Studios presents the ShadowRealms saga." />
-  <link rel="icon" href="data:image/svg+xml,
-    %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E
-      %3Ccircle cx='50' cy='50' r='46' fill='%23ffffff'/%3E
-      %3Cpath d='M50 14 L62 45 L95 45 L68 63 L78 92 L50 73 L22 92 L32 63 L5 45 L38 45 Z'
-            fill='%23000000'/%3E
-    %3C/svg%3E" />
+  <meta name="description" content="Epic worlds. Real hearts. GE&LE Studios brings the ShadowRealms saga to life." />
   <style>
     :root{
-      --bg-a: #0b0f1a; --bg-b: #1b0f2a; --bg-c: #3a0f5a;
-      --text: #edf2f7; --muted:#c9ced6; --accent:#ffd166; --glass:#ffffff0f; --glass2:#ffffff14;
+      --bg:#0b0f1a; --panel:#151a26; --accent:#ffcc00; --text:#edf2f7; --muted:#9aa4b2;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; color:var(--text); font:500 16px/1.6 system-ui, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 20% -10%, var(--bg-c), transparent),
-                  radial-gradient(1000px 800px at 120% 20%, #8a2be2, transparent),
-                  linear-gradient(160deg, var(--bg-a), var(--bg-b));
-      display:flex; flex-direction:column;
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(800px 400px at 10% -10%, #1b3260 0%, transparent 60%),
+        radial-gradient(700px 350px at 110% 10%, #3f1b60 0%, transparent 60%),
+        linear-gradient(160deg, #0b0f1a, #0b0f1a 40%, #0e1230 100%);
     }
-    header{position:fixed; inset:0 0 auto 0; display:flex; justify-content:center; z-index:10}
-    .nav{
-      width:min(1100px, 92vw); margin:16px; padding:12px 16px;
-      background:var(--glass); border:1px solid var(--glass2); backdrop-filter: blur(8px);
-      border-radius:20px; display:flex; align-items:center; justify-content:space-between;
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(8px);
+      background: rgba(10,14,28,.5); border-bottom:1px solid rgba(255,255,255,.08);
     }
-    .brand{font-weight:800; letter-spacing:.4px}
-    .brand span{opacity:.8; font-weight:600}
-    .links a{color:var(--muted); text-decoration:none; margin-left:18px}
-    .links a:hover{color:var(--text)}
-    .hero{
-      min-height:100vh; display:grid; place-items:center; text-align:center; padding:120px 20px 40px;
+    .bar{max-width:1100px; margin:0 auto; padding:14px 18px; display:flex; gap:18px; align-items:center; justify-content:space-between}
+    .brand{font-weight:800; letter-spacing:.5px; color:var(--accent)}
+    nav a{color:var(--text); text-decoration:none; opacity:.9; margin-left:14px}
+    nav a:hover{opacity:1}
+    .hero{max-width:1100px; margin:32px auto 10px; padding:24px 18px 0}
+    .eyebrow{display:inline-block; padding:6px 10px; border-radius:999px; font-size:.85rem; color:#111; background:var(--accent); font-weight:700}
+    h1{font-size:2.2rem; margin:14px 0 6px}
+    .sub{color:var(--muted); font-size:1.1rem; line-height:1.5}
+    .cta{display:flex; gap:12px; margin:22px 0 10px}
+    .btn{display:inline-block; padding:12px 16px; border-radius:10px; text-decoration:none; font-weight:700}
+    .btn.primary{background:var(--accent); color:#222}
+    .btn.ghost{border:1px solid rgba(255,255,255,.2); color:var(--text)}
+    .wrap{max-width:1100px; margin:10px auto 40px; padding:0 18px}
+    .grid{
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:18px; margin-top:18px;
     }
     .card{
-      width:min(1000px, 92vw);
-      background:var(--glass); border:1px solid var(--glass2); border-radius:28px;
-      padding:56px 28px; box-shadow:0 10px 40px #00000040;
+      background:var(--panel); border:1px solid rgba(255,255,255,.08);
+      border-radius:16px; padding:16px; text-align:left;
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
     }
-    .tag{display:inline-block; padding:8px 14px; border-radius:999px;
-         background:#ffffff14; color:var(--muted); font-weight:600; letter-spacing:.3px}
-    h1{
-      margin:18px 0 10px; font-size:clamp(32px, 6vw, 64px); line-height:1.05; font-weight:900;
-      letter-spacing:.3px;
+    .poster{
+      width:100%; aspect-ratio: 3/4; object-fit:cover; border-radius:12px;
+      border:1px solid rgba(255,255,255,.08); display:block; margin-bottom:12px;
     }
-    .lead{color:var(--muted); font-size:clamp(16px, 2.6vw, 20px); margin:0 auto 26px; max-width:780px}
-    .actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
-    .btn{
-      padding:14px 20px; border-radius:14px; border:1px solid transparent; text-decoration:none;
-      font-weight:700; letter-spacing:.3px; transition:.2s transform,.2s box-shadow, .2s background;
-    }
-    .btn.primary{background:var(--accent); color:#1b1b1b}
-    .btn.primary:hover{transform:translateY(-2px); box-shadow:0 10px 28px #0000004a}
-    .btn.ghost{background:transparent; color:var(--text); border-color:#ffffff2a}
-    .btn.ghost:hover{background:#ffffff12}
-    .features{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-              gap:14px; margin-top:28px}
-    .feat{padding:18px; background:#ffffff0b; border:1px solid #ffffff12; border-radius:16px; text-align:left}
-    .feat h3{margin:2px 0 6px; font-size:18px}
-    footer{color:#a8adbb70; text-align:center; padding:24px 10px}
+    .card h3{margin:6px 0 6px; font-size:1.15rem}
+    .muted{color:var(--muted)}
+    footer{border-top:1px solid rgba(255,255,255,.08); padding:18px; text-align:center; color:var(--muted)}
+    @media (min-width:900px){ h1{font-size:3rem} }
   </style>
 </head>
 <body>
   <header>
-    <nav class="nav">
-      <div class="brand">GE&LE <span>Studios</span></div>
-      <div class="links">
+    <div class="bar">
+      <div class="brand">GE&LE Studios</div>
+      <nav>
         <a href="#books">Books</a>
-        <a href="#vision">Vision</a>
         <a href="#about">About</a>
-      </div>
-    </nav>
+        <a href="mailto:hello@example.com">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="hero">
-    <section class="card">
-      <div class="tag">Epic worlds. Real hearts.</div>
-      <h1>Shaping myth. Forging hope.</h1>
-      <p class="lead">
-        GE&amp;LE Studios brings the <strong>ShadowRealms</strong> saga to life—crafted with faith,
-        courage, and soul-deep storytelling.
-      </p>
-      <div class="actions">
-        <!-- Update these hrefs to real pages or external links when ready -->
-        <a class="btn primary" href="#books">Explore the Books</a>
-        <a class="btn ghost" href="#vision">Watch the Vision</a>
-      </div>
+  <section class="hero">
+    <span class="eyebrow">Epic worlds. Real hearts.</span>
+    <h1>Shaping myth. Forging hope.</h1>
+    <p class="sub">
+      GE&LE Studios brings the <strong>ShadowRealms</strong> saga to life—crafted with faith, courage, and soul-deep storytelling.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#books">Explore the Books</a>
+      <a class="btn ghost" href="#about">Our Vision</a>
+    </div>
+  </section>
 
-      <div class="features">
-        <div class="feat">
-          <h3 id="books">ShadowFlame: The Forbidden City</h3>
-          <p>A gamer forged in fire and faith collides with a love stronger than death.</p>
-        </div>
-        <div class="feat">
-          <h3>Book II: The Whispering Ember</h3>
-          <p>Zephyr's presence burns in dreams as Stephen fights to bring her back.</p>
-        </div>
-        <div class="feat" id="vision">
-          <h3>Cinematic Vision</h3>
-          <p>World-class visuals and music to match the story’s heartbeat.</p>
-        </div>
-        <div class="feat" id="about">
-          <h3>About GE&LE</h3>
-          <p>Faith-forged creativity: courage, beauty, and truth at the core of every page.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+  <section id="books" class="wrap">
+    <h2>Books</h2>
+    <div class="grid">
+      <!-- Book 1 -->
+      <article class="card">
+        <img class="poster" src="book1-poster.jpg" alt="Poster for ShadowFlame: The Forbidden City">
+        <h3>ShadowFlame: <em>The Forbidden City</em></h3>
+        <p class="muted">A gamer forged in fire and faith collides with a love stronger than death.</p>
+        <p><a class="btn primary" href="book1.html">Read more</a></p>
+      </article>
 
-  <footer>© <span id="y"></span> GE&LE Studios. All rights reserved.</footer>
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+      <!-- Book 2 -->
+      <article class="card">
+        <img class="poster" src="book2-poster.jpg" alt="Poster for Book II: The Whispering Ember">
+        <h3>Book II: <em>The Whispering Ember</em></h3>
+        <p class="muted">Zephyr’s presence burns in dreams as Stephen fights to bring her back.</p>
+        <p><a class="btn primary" href="book2.html">Read more</a></p>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="wrap">
+    <h2>About GE&LE</h2>
+    <p class="muted">
+      Faith-forged creativity: courage, beauty, and truth at the core of every page. Stories that echo long after “The End.”
+    </p>
+  </section>
+
+  <footer>&copy; 2025 GE&LE Studios. All rights reserved.</footer>
 </body>
 </html>
-<!-- Book Links Section -->
-<div class="book-links">
-  <h2>Our Books</h2>
-  <ul>
-    <li><a href="book1.html">📖 ShadowFlame: The Forbidden City</a></li>
-    <li><a href="book2.html">📖 ShadowRealms: The Whispering Ember</a></li>
-  </ul>
-</div>
