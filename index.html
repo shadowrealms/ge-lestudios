@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Essentials -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GE & LE Studios — The Forged Saga</title>
   <meta name="description" content="The Forged Saga by GE & LE Studios — Book 1: Book of the Forged. Book 2: Forged of the Dragon. Cinematic fantasy forged in faith and dragonfire." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <!-- Canonical / Sitemap (optional) -->
+  <link rel="canonical" href="https://shadowrealms.github.io/" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- Favicons / PWA (use your logo for now) -->
+  <link rel="icon" type="image/jpeg" href="gl-logo.jpg" />
+  <link rel="apple-touch-icon" href="gl-logo.jpg" />
+  <meta name="theme-color" content="#0a0a0b" />
+
+  <!-- Social cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GE & LE Studios" />
+  <meta property="og:title" content="The Forged Saga — GE & LE Studios" />
+  <meta property="og:description" content="A mythic, cinematic fantasy where dragons rise, vows outlast death, and love becomes a weapon against the dark." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg">
+  <link rel="preload" as="audio" href="/audio/forged-theme.mp3">
+
   <style>
     :root{
       --bg:#0a0a0b; --panel:#121214; --text:#f3f3f3;
       --muted:#b7b7b7; --ring:#2a2a2f;
       --gold:#caa35a; --gold-2:#e6c27a; --accent:#d39b42;
+      --banner:#15120d; --banner-border:#46361b;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -23,8 +50,28 @@
         var(--bg);
       line-height:1.65;
     }
+    img{max-width:100%; display:block}
     a{color:var(--gold-2); text-decoration:none}
     a:hover{opacity:.92}
+
+    /* COMING SOON banner */
+    .banner{
+      position:sticky; top:0; z-index:50;
+      background:
+        radial-gradient(800px 180px at 10% 0, rgba(226,199,120,.18), transparent 60%),
+        var(--banner);
+      border-bottom:1px solid var(--banner-border);
+      color:#f7e7b0;
+    }
+    .banner-inner{width:min(1100px,92vw); margin:0 auto; padding:10px 0; display:flex; align-items:center; gap:12px}
+    .pill{display:inline-block; font-size:.78rem; padding:4px 10px; border:1px solid var(--gold); border-radius:999px; color:var(--gold)}
+    .banner strong{letter-spacing:.06em}
+    .banner .spacer{flex:1}
+    .banner button{
+      background:transparent; color:#f7e7b0; border:1px solid var(--banner-border);
+      border-radius:10px; padding:6px 10px; cursor:pointer
+    }
+    .banner button:hover{border-color:var(--gold-2); color:var(--gold-2)}
 
     .wrap{width:min(1100px, 92vw); margin:0 auto}
     header{
@@ -61,7 +108,7 @@
       box-shadow:0 8px 28px rgba(0,0,0,.35);
     }
     .cover{aspect-ratio:3/4; background:#0f0f12; border-bottom:1px solid rgba(226,199,120,.08)}
-    .cover img{width:100%; height:100%; object-fit:cover; display:block}
+    .cover img{width:100%; height:100%; object-fit:cover}
     .body{padding:18px; display:grid; gap:10px}
     .badge{font-size:.74rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-2)}
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:4px}
@@ -95,20 +142,24 @@
 
     footer{border-top:1px solid rgba(226,199,120,.12); padding-bottom:40px}
     small{color:var(--muted)}
-
-    /* ===== Reveal-on-scroll animations ===== */
-    .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
-    .reveal.show{opacity:1; transform:none}
-    @media (prefers-reduced-motion: reduce){
-      .reveal{opacity:1 !important; transform:none !important; transition:none !important}
-    }
   </style>
 </head>
 <body>
 
-  <header class="reveal show">
+  <!-- COMING SOON BANNER -->
+  <div class="banner" role="region" aria-label="Site status banner">
+    <div class="banner-inner">
+      <span class="pill">COMING&nbsp;SOON</span>
+      <strong style="margin-left:6px">The Forged Saga — Official Website</strong>
+      <span class="spacer"></span>
+      <a class="btn secondary" href="#trailer" style="padding:6px 10px">Watch Teasers</a>
+      <button type="button" aria-label="Hide announcement" onclick="this.closest('.banner').style.display='none'">Close</button>
+    </div>
+  </div>
+
+  <header>
     <div class="wrap">
-      <nav>
+      <nav aria-label="Primary">
         <div class="brand">
           <img src="gl-logo.jpg" alt="GE & LE Studios logo" />
           <span>GE &amp; LE STUDIOS</span>
@@ -125,11 +176,14 @@
     </div>
   </header>
 
-  <main>
+  <main id="content">
     <!-- HERO -->
-    <section class="hero reveal" id="home">
+    <section class="hero" id="home">
       <div class="wrap">
-        <img class="hero-logo" src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250816-031135_Gallery.jpg?raw=true" alt="The Forged Saga — key art" />
+        <img
+          class="hero-logo"
+          src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg"
+          alt="The Forged Saga — key art: silhouette before a towering dragon of flame" />
         <div class="tag">FORGED IN FAITH • THE FORGED SAGA</div>
         <h1>The Forged Saga</h1>
         <p class="subtitle">A mythic, cinematic fantasy where dragons rise, vows outlast death, and love becomes a weapon against the dark.</p>
@@ -137,20 +191,22 @@
     </section>
 
     <!-- BOOKS -->
-    <section id="books" class="reveal">
+    <section id="books" aria-labelledby="books-title">
       <div class="wrap">
-        <h2>Books</h2>
+        <h2 id="books-title">Books</h2>
         <p class="subtitle">Two pillars of one destiny.</p>
 
         <div class="grid">
           <!-- Book One -->
-          <article class="card reveal">
+          <article class="card" aria-labelledby="b1-title">
             <div class="cover">
-              <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250816-031135_Gallery.jpg?raw=true" alt="Book of the Forged (temp art)" />
+              <img loading="lazy" decoding="async"
+                   src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg"
+                   alt="Key art — Book of the Forged" />
             </div>
             <div class="body">
               <div class="badge">Book One</div>
-              <h3><em>Book of the Forged</em></h3>
+              <h3 id="b1-title"><em>Book of the Forged</em></h3>
               <p>Stephen steps beyond the veil where fate is carved in flame and shadow. Forged by trials of heart and soul, he must claim his place before darkness swallows the realms.</p>
               <div class="cta">
                 <a class="btn" href="#trailer">Watch Teaser</a>
@@ -160,13 +216,15 @@
           </article>
 
           <!-- Book Two -->
-          <article class="card reveal">
+          <article class="card" aria-labelledby="b2-title">
             <div class="cover">
-              <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250815-235522_Chrome.jpg?raw=true" alt="Forged of the Dragon (temp art)" />
+              <img loading="lazy" decoding="async"
+                   src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250815-235522_Chrome.jpg"
+                   alt="Key art — Forged of the Dragon" />
             </div>
             <div class="body">
               <div class="badge">Book Two</div>
-              <h3><em>Forged of the Dragon</em></h3>
+              <h3 id="b2-title"><em>Forged of the Dragon</em></h3>
               <p>In the heart of battle, mortal and dragon souls unite. Prophecy burns like iron, memory bites like frost, and love learns to wield wings.</p>
               <div class="cta">
                 <a class="btn" href="#trailer">Watch Teaser</a>
@@ -177,7 +235,7 @@
         </div>
 
         <!-- Verses -->
-        <div class="band reveal">
+        <div class="band" aria-label="Verses">
           <strong>Verses</strong>
           <blockquote>“The mountain did not split because of time or storm — it split because war demanded to be born.”</blockquote>
           <blockquote>“Beneath the weight of shadow, the Forged do not bow — they burn.”</blockquote>
@@ -187,19 +245,23 @@
     </section>
 
     <!-- POSTERS / GALLERY -->
-    <section id="posters" class="reveal">
+    <section id="posters" aria-labelledby="posters-title">
       <div class="wrap">
-        <h2>Posters</h2>
+        <h2 id="posters-title">Posters</h2>
         <div class="grid">
-          <article class="card reveal">
+          <article class="card">
             <div class="cover">
-              <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250816-031135_Gallery.jpg?raw=true" alt="Poster — Book of the Forged" />
+              <img loading="lazy" decoding="async"
+                   src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg"
+                   alt="Poster — Book of the Forged" />
             </div>
             <div class="body"><div class="badge">Key Art</div><strong>Book of the Forged</strong></div>
           </article>
-          <article class="card reveal">
+          <article class="card">
             <div class="cover">
-              <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250815-235522_Chrome.jpg?raw=true" alt="Poster — Forged of the Dragon" />
+              <img loading="lazy" decoding="async"
+                   src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250815-235522_Chrome.jpg"
+                   alt="Poster — Forged of the Dragon" />
             </div>
             <div class="body"><div class="badge">Key Art</div><strong>Forged of the Dragon</strong></div>
           </article>
@@ -208,14 +270,15 @@
     </section>
 
     <!-- SOUNDTRACK -->
-    <section id="soundtrack" class="reveal">
+    <section id="soundtrack" aria-labelledby="soundtrack-title">
       <div class="wrap">
-        <h2>Soundtrack</h2>
+        <h2 id="soundtrack-title">Soundtrack</h2>
         <p class="subtitle">Music by Darrin Williams. Full OST coming soon.</p>
         <div class="sound">
-          <div class="panel reveal">
+          <div class="panel">
             <strong>Theme: The Forged Saga</strong>
-            <audio controls preload="none" style="width:100%">
+            <!-- Upload /audio/forged-theme.mp3 when ready -->
+            <audio controls preload="none" style="width:100%" aria-label="Play The Forged Saga theme">
               <source src="audio/forged-theme.mp3" type="audio/mpeg" />
             </audio>
             <p style="margin:.6rem 0 0">
@@ -226,11 +289,44 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="reveal">
+    <!-- TRAILER -->
+    <section id="trailer" aria-labelledby="trailer-title">
       <div class="wrap">
-        <div class="band reveal">
-          <h2 style="margin:0 0 6px;">About the Forged Saga</h2>
+        <h2 id="trailer-title" style="color:var(--gold); text-shadow:0 0 10px rgba(202,163,90,.7)">Official Cinematic Trailers</h2>
+        <div class="trailers">
+          <!-- Teaser A -->
+          <div class="frame">
+            <h3>Teaser A</h3>
+            <div class="yt">
+              <iframe
+                src="https://www.youtube.com/embed/a0Aun_uEmL0"
+                title="The Forged Saga — Teaser A"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          <!-- Teaser B (Short) -->
+          <div class="frame">
+            <h3><span class="badge" style="background:rgba(226,199,120,.12); padding:4px 8px; border-radius:8px; margin-right:8px">New</span>Teaser B</h3>
+            <div class="yt">
+              <iframe
+                src="https://www.youtube.com/embed/RMny5gzN4A4"
+                title="The Forged Saga — Teaser B (YouTube Short)"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="band">
+          <h2 id="about-title" style="margin:0 0 6px;">About the Forged Saga</h2>
           <p>The Forged Saga is an epic fantasy journey spanning realms of fire, shadow, and light. Across
              <em>Book of the Forged</em> and <em>Forged of the Dragon</em>, Stephen’s destiny unfolds—bound to dragons, haunted by prophecy, and driven by a love powerful enough to defy death itself.</p>
           <p style="margin:0; font-style:italic; color:var(--muted)">“Two souls. One flame. Forged to change the fate of worlds.”</p>
@@ -238,76 +334,25 @@
       </div>
     </section>
 
-    <!-- TRAILER -->
-    <section id="trailer" class="reveal">
-      <div class="wrap">
-        <h2 style="color:var(--gold); text-shadow:0 0 10px rgba(202,163,90,.7)">Official Cinematic Trailers</h2>
-        <div class="trailers">
-          <!-- Trailer A -->
-          <div class="frame reveal">
-            <h3>Teaser A</h3>
-            <div class="yt">
-              <iframe
-                src="https://www.youtube.com/embed/a0Aun_uEmL0"
-                title="The Forged Saga — Teaser A"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen loading="lazy">
-              </iframe>
-            </div>
-          </div>
-          <!-- Trailer B -->
-          <div class="frame reveal">
-            <div style="display:inline-block; background:var(--accent); color:#fff; font-size:.7rem; font-weight:bold; letter-spacing:.12em; padding:4px 8px; border-radius:6px; margin-bottom:6px;">
-              NEW
-            </div>
-            <h3>Teaser B</h3>
-            <div class="yt">
-              <iframe
-                src="https://www.youtube.com/embed/RMny5gzN4A4?autoplay=1&mute=1&loop=1&playlist=RMny5gzN4A4"
-                title="The Forged Saga — Teaser B"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen loading="lazy">
-              </iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- CONTACT -->
-    <section id="contact" class="reveal">
+    <section id="contact" aria-labelledby="contact-title">
       <div class="wrap">
-        <div class="band reveal">
-          <h2 style="margin-top:0;">Contact & Materials</h2>
+        <div class="band">
+          <h2 id="contact-title" style="margin-top:0;">Contact & Materials</h2>
           <p>For requests, materials, or rights inquiries, reach out via our site or social channels. A press kit and chapter samples are available upon request.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="reveal">
+  <footer>
     <div class="wrap" style="text-align:center; padding-top:22px">
-      <img src="gl-logo.jpg" alt="GE & LE Studios" style="width:68px; height:68px; border-radius:50%; box-shadow:0 0 18px rgba(0,0,0,.3)" />
+      <img src="gl-logo.jpg" alt="GE & LE Studios" style="width:68px; height:68px; border-radius:50%; box-shadow:0 0 18px rgba(202,163,90,.3)" loading="lazy" decoding="async" />
       <p style="margin:10px 0 6px;">© 2025 GE &amp; LE Studios</p>
       <small>Forged in Faith • The Forged Saga</small>
     </div>
   </footer>
 
-  <!-- Reveal-on-scroll script -->
-  <script>
-  (function(){
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const els = Array.from(document.querySelectorAll('.reveal'));
-    const io = new IntersectionObserver((entries)=>{
-      for (const e of entries){
-        if (e.isIntersecting){
-          e.target.classList.add('show');
-          io.unobserve(e.target);
-        }
-      }
-    }, {threshold:.2});
-    els.forEach(el=>io.observe(el));
-  })();
-  </script>
+  <noscript><style>.yt{border:none}</style></noscript>
 </body>
-  </html>
+                </html>
