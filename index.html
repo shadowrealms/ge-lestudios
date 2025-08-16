@@ -13,9 +13,10 @@
   <link rel="canonical" href="https://shadowrealms.github.io/" />
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-  <!-- Icons -->
+  <!-- Icons / PWA -->
   <link rel="icon" type="image/jpeg" href="gl-logo.jpg" />
   <link rel="apple-touch-icon" href="gl-logo.jpg" />
+  <link rel="manifest" href="/manifest.webmanifest" />
 
   <!-- Social cards -->
   <meta property="og:type" content="website" />
@@ -31,16 +32,12 @@
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg">
   <link rel="preload" as="audio" href="/audio/forged-theme.mp3">
 
-  <!-- PWA (optional, safe if files exist) -->
-  <link rel="manifest" href="/manifest.webmanifest">
-
   <style>
     :root{
-      --bg:#0a0a0b; --panel:#121214; --text:#f3f3f3;
-      --muted:#b7b7b7; --ring:#2a2a2f;
+      --bg:#0a0a0b; --panel:#121214; --text:#f3f3f3; --muted:#b7b7b7; --ring:#2a2a2f;
       --gold:#caa35a; --gold-2:#e6c27a; --accent:#d39b42;
       --banner:#15120d; --banner-border:#46361b;
-      --ok:#78d18b; --warn:#f0c36a; --danger:#f28b82;
+      --bubble:#101012; --bubble-border:#2a2a2f;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -63,7 +60,7 @@
     .fade-in.delay{animation-delay:.18s}
     @keyframes fade{to{opacity:1; transform:none}}
 
-    /* Banner */
+    /* COMING SOON banner */
     .banner{
       position:sticky; top:0; z-index:50;
       background:
@@ -100,7 +97,8 @@
     .audio-controls{display:flex; align-items:center; gap:12px; margin-left:16px}
     .mute-btn{
       display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:10px;
-      border:1px solid var(--ring); background:#1a1a1e; color:var(--text); font-weight:700; cursor:pointer;
+      border:1px solid var(--ring); background:#1a1a1e; color:var(--text); font-weight:700;
+      cursor:pointer;
     }
     .eq{display:inline-grid; grid-template-columns:repeat(4,3px); gap:3px; height:14px}
     .eq span{width:3px; height:100%; background:linear-gradient(#e6c27a,#caa35a); opacity:.85; transform-origin:bottom}
@@ -121,13 +119,19 @@
 
     section{padding:60px 0}
     h2{font-size:clamp(1.6rem,3.3vw,2.2rem); margin:0 0 8px}
-    .grid{display:grid; gap:22px; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); margin-top:12px}
+    .grid{
+      display:grid; gap:22px;
+      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+      margin-top:12px;
+    }
     .card{
       background:var(--panel); border:1px solid rgba(226,199,120,.08);
-      border-radius:16px; overflow:hidden; box-shadow:0 8px 28px rgba(0,0,0,.35);
+      border-radius:16px; overflow:hidden;
+      box-shadow:0 8px 28px rgba(0,0,0,.35);
     }
     .cover{aspect-ratio:3/4; background:#0f0f12; border-bottom:1px solid rgba(226,199,120,.08)}
     .cover img{width:100%; height:100%; object-fit:cover}
+
     .body{padding:18px; display:grid; gap:10px}
     .badge{font-size:.74rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-2)}
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:4px}
@@ -144,13 +148,31 @@
     /* Trailer + Soundtrack */
     #trailer{background:#000; box-shadow: inset 0 0 40px rgba(202,163,90,.22)}
     .trailers{display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-    .frame{background:#080808; border:1px solid rgba(202,163,90,.35); border-radius:14px; padding:14px; box-shadow:0 0 25px rgba(202,163,90,.18)}
+    .frame{
+      background:#080808; border:1px solid rgba(202,163,90,.35); border-radius:14px; padding:14px;
+      box-shadow:0 0 25px rgba(202,163,90,.18);
+    }
     .frame h3{margin:4px 0 12px; color:var(--gold)}
-    .yt{position:relative; width:100%; padding-top:56.25%; border-radius:10px; overflow:hidden; border:4px solid var(--gold); box-shadow:0 0 22px rgba(202,163,90,.35); background:#000;}
+    .yt{
+      position:relative; width:100%; padding-top:56.25%; border-radius:10px; overflow:hidden;
+      border:4px solid var(--gold); box-shadow:0 0 22px rgba(202,163,90,.35);
+      background:#000;
+    }
     .yt iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
 
     .sound{display:grid; gap:16px; grid-template-columns:1fr; max-width:780px}
     .sound .panel{background:#0f0f11; border:1px solid rgba(226,199,120,.1); border-radius:14px; padding:16px}
+
+    /* Chat demo */
+    .chat{background:#0a0a0c; border:1px solid rgba(226,199,120,.1); border-radius:16px; padding:16px}
+    .chat .row{display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap}
+    .chat .switch{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background:#0f0f11; border:1px solid var(--ring)}
+    .chatlog{max-height:340px; overflow:auto; display:grid; gap:12px; margin:12px 0}
+    .bubble{background:var(--bubble); border:1px solid var(--bubble-border); border-radius:16px; padding:14px}
+    .bubble.me{margin-left:auto; background:#131318; border-color:#2f2f36}
+    .composer{display:flex; gap:10px}
+    .composer input{flex:1; min-width:0; padding:12px 14px; border-radius:12px; border:1px solid var(--ring); background:#121216; color:var(--text)}
+    .composer button{padding:12px 16px; border-radius:12px; border:1px solid var(--ring); background:#1a1a1e; color:var(--text); font-weight:700}
 
     footer{border-top:1px solid rgba(226,199,120,.12); padding-bottom:40px}
     small{color:var(--muted)}
@@ -163,32 +185,6 @@
       background:#121216; color:var(--text); font:inherit;
     }
     textarea{min-height:120px; resize:vertical}
-
-    /* CHAT */
-    #chat{background:linear-gradient(180deg, rgba(226,199,120,.06), transparent 45%)}
-    .chat-wrap{display:grid; gap:16px; grid-template-columns:1fr; max-width:980px}
-    .chat-window{
-      background:#0f0f11; border:1px solid rgba(226,199,120,.1); border-radius:14px;
-      display:grid; grid-template-rows:auto 1fr auto; min-height:420px; overflow:hidden;
-    }
-    .chat-header{
-      display:flex; align-items:center; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(226,199,120,.08);
-      background:linear-gradient(180deg, rgba(202,163,90,.12), rgba(15,15,17,.8));
-    }
-    .status-dot{width:10px; height:10px; border-radius:50%; background:var(--ok); box-shadow:0 0 10px rgba(120,209,139,.6)}
-    .chat-log{padding:14px; overflow:auto; display:flex; flex-direction:column; gap:10px; scroll-behavior:smooth}
-    .msg{max-width:78%; padding:10px 12px; border-radius:12px; border:1px solid rgba(226,199,120,.12); background:#121216}
-    .msg.me{margin-left:auto; border-color:rgba(226,199,120,.28); background:#17171b}
-    .msg.bot{background:#121214}
-    .meta{font-size:.72rem; color:var(--muted); margin-bottom:4px}
-    .chat-input{display:flex; gap:10px; padding:12px; border-top:1px solid rgba(226,199,120,.08); background:#101013}
-    .chat-input input[type="text"]{flex:1}
-    .name-row{display:flex; gap:10px; align-items:center; padding:0 12px 8px}
-    .name-row input{max-width:260px}
-    .tiny{font-size:.8rem; color:var(--muted)}
-    .chip{display:inline-flex; gap:8px; align-items:center; font-size:.78rem; padding:6px 10px; border-radius:999px; border:1px solid rgba(226,199,120,.16); background:#18181c}
-    .chip button{background:transparent; border:0; color:#f3f3f3; cursor:pointer}
-    .chip button:hover{opacity:.8}
   </style>
 </head>
 <body>
@@ -397,38 +393,31 @@
       </div>
     </section>
 
-    <!-- CHAT -->
+    <!-- CHAT DEMO -->
     <section id="chat" aria-labelledby="chat-title">
       <div class="wrap">
-        <h2 id="chat-title">Chat with GE &amp; LE Studios</h2>
-        <p class="subtitle">Ask about the books, rights, or production. This demo chat stores conversations locally on your device.</p>
-        <div class="chat-wrap">
-          <div class="chat-window" role="region" aria-label="Chat window">
-            <div class="chat-header">
-              <span class="status-dot" aria-hidden="true"></span>
-              <strong>Forged Support</strong>
-              <span class="chip" id="chatStatus"><span aria-live="polite">Online</span>
-                <button type="button" id="clearChat" title="Clear conversation">Clear</button>
-              </span>
-              <span class="spacer" style="flex:1"></span>
-              <span class="tiny">Tip: Press <kbd>Enter</kbd> to send</span>
-            </div>
-
-            <div class="name-row">
-              <label class="tiny">Your name:
-                <input id="chatName" type="text" placeholder="e.g., Stephen" autocomplete="name">
-              </label>
-              <span class="tiny">Your messages will be signed with this name.</span>
-            </div>
-
-            <div id="chatLog" class="chat-log" aria-live="polite"></div>
-
-            <div class="chat-input">
-              <input id="chatMsg" type="text" placeholder="Type your message…" aria-label="Message to send">
-              <button id="sendBtn" class="btn" type="button">Send</button>
-            </div>
+        <div class="band chat">
+          <h2 id="chat-title" style="margin:0 0 12px;">Chat with GE & LE Studios</h2>
+          <div class="row">
+            <div class="switch"><span style="width:10px;height:10px;border-radius:50%;background:#4ade80;display:inline-block"></span> Forged Support</div>
+            <div style="margin-left:auto; color:var(--muted)">Tip: Press <strong>Enter</strong> to send</div>
           </div>
-          <p class="tiny">Note: This is a front-end demo chat (no server). For live inbox routing, wire the form below or connect a provider later.</p>
+
+          <div class="row">
+            <label style="flex:1">Your name:<br/>
+              <input id="chatName" placeholder="e.g., Stephen" />
+            </label>
+            <button id="chatClear" class="btn secondary" type="button">Clear</button>
+          </div>
+
+          <div id="chatLog" class="chatlog" aria-live="polite"></div>
+
+          <div class="composer">
+            <input id="chatInput" placeholder="Type your message..." />
+            <button id="chatSend" class="btn" type="button">Send</button>
+          </div>
+
+          <p class="subtitle" style="margin-top:12px">Note: This is a front-end demo chat (no server). For live inbox routing, wire a form or connect a provider later.</p>
         </div>
       </div>
     </section>
@@ -513,7 +502,7 @@
     function applyVolume(v){
       const linear = Math.pow(v/100, 1.5);
       if (gain) gain.gain.value = linear;
-      audio.volume = 1; // use WebAudio gain for shaping
+      audio.volume = 1;
     }
     function fadeTo(target, ms=300){
       if (!ctxReady) { audio.muted = (target === 0); return; }
@@ -577,123 +566,62 @@
   })();
   </script>
 
-  <!-- CHAT logic: local storage, typing indicator, simple auto-replies -->
+  <!-- Chat demo logic (localStorage) -->
   <script>
-  (function(){
-    const log = document.getElementById('chatLog');
-    const msg = document.getElementById('chatMsg');
-    const btn = document.getElementById('sendBtn');
-    const nameInput = document.getElementById('chatName');
-    const clearBtn = document.getElementById('clearChat');
-    const STORAGE_KEY = 'forged_chat_log';
-    const NAME_KEY = 'forged_chat_name';
+    (function(){
+      const logEl = document.getElementById('chatLog');
+      const nameEl = document.getElementById('chatName');
+      const inputEl = document.getElementById('chatInput');
+      const sendBtn = document.getElementById('chatSend');
+      const clearBtn = document.getElementById('chatClear');
 
-    // Utilities
-    const time = () => new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-    function saveLog(){
-      const data = Array.from(log.querySelectorAll('.msg')).map(el=>({
-        who: el.classList.contains('me') ? 'me' : 'bot',
-        html: el.querySelector('.text').innerHTML,
-        t: el.dataset.t || ''
-      }));
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    }
-    function restore(){
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (!saved) {
-        systemIntro();
-        return;
-      }
-      try{
-        const arr = JSON.parse(saved);
-        arr.forEach(item=>{
-          push(item.who, item.html, item.t || '');
-        });
-      }catch{ systemIntro(); }
-    }
-    function push(who, html, t=''){
-      const wrap = document.createElement('div');
-      wrap.className = `msg ${who}`;
-      wrap.dataset.t = t || time();
-      wrap.innerHTML = `
-        <div class="meta">${who==='me' ? (nameInput.value||'You') : 'Forged Support'} • ${wrap.dataset.t}</div>
-        <div class="text">${html}</div>
-      `;
-      log.appendChild(wrap);
-      log.scrollTop = log.scrollHeight;
-      saveLog();
-    }
-    function systemIntro(){
-      push('bot', 'Welcome to GE &amp; LE Studios! Ask about the books, rights, trailers, or production. 🔥');
-      push('bot', 'Tip: Share your email in the Contact section if you need a formal response.');
-    }
-    function send(){
-      const txt = msg.value.trim();
-      if (!txt) return;
-      push('me', escapeHtml(txt));
-      msg.value = '';
-      // simple auto-reply script
-      autoReply(txt);
-    }
-    function escapeHtml(s){
-      const div = document.createElement('div');
-      div.innerText = s;
-      return div.innerHTML.replace(/\n/g,'<br>');
-    }
+      const KEY='forged-chat';
+      const now = ()=> new Date();
 
-    function autoReply(text){
-      const t = text.toLowerCase();
-      const typing = document.createElement('div');
-      typing.className = 'msg bot';
-      typing.innerHTML = `<div class="meta">Forged Support • ${time()}</div><div class="text">typing…</div>`;
-      log.appendChild(typing);
-      log.scrollTop = log.scrollHeight;
-
-      const reply = ()=>{
-        typing.remove();
-        let res = "Thanks for the message! We’ll follow up via the contact form if you need official materials.";
-        if (t.includes('rights') || t.includes('license') || t.includes('publish')){
-          res = 'Rights & licensing: use the Contact section with your details and we’ll share the press kit + next steps.';
-        } else if (t.includes('press') || t.includes('kit')){
-          res = 'Press kit: grab the ZIP in the Press section or open the Google Drive folder. Need a custom size? Tell us.';
-        } else if (t.includes('trailer') || t.includes('teaser')){
-          res = 'Trailers are embedded below. If music is playing, it auto-pauses when you interact with the video.';
-        } else if (t.includes('music') || t.includes('soundtrack') || t.includes('theme')){
-          res = 'Use the Play/Mute control in the header. Volume slider remembers your last setting.';
-        } else if (t.includes('book') || t.includes('chapter') || t.includes('series')){
-          res = 'Books 1 & 2 are showcased above. We can share chapter samples on request via Contact.';
-        } else if (t.includes('hello') || t.includes('hi') || t.includes('hey')){
-          res = 'Hello! How can we help? 🔥';
+      function render(){
+        logEl.innerHTML='';
+        const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
+        for (const m of messages){
+          const b = document.createElement('div');
+          b.className='bubble'+(m.me?' me':'');
+          b.innerHTML = `<div style="color:#9aa">${m.from} • ${m.time}</div><div>${m.text}</div>`;
+          logEl.appendChild(b);
         }
-        push('bot', res);
-      };
-      setTimeout(reply, 550 + Math.random()*500);
-    }
+        logEl.scrollTop = logEl.scrollHeight;
+      }
+      function add(from, text, me=false){
+        const t = now();
+        const time = t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+        const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
+        messages.push({from, text, me, time});
+        localStorage.setItem(KEY, JSON.stringify(messages.slice(-200)));
+        render();
+      }
 
-    // Restore name
-    const savedName = localStorage.getItem(NAME_KEY);
-    if (savedName) nameInput.value = savedName;
-    nameInput.addEventListener('input', ()=> localStorage.setItem(NAME_KEY, nameInput.value));
+      // Seed welcome messages once
+      if (!localStorage.getItem(KEY)){
+        add('Forged Support','Welcome to GE & LE Studios! Ask about the books, rights, trailers, or production. 🔥');
+        add('Forged Support','Tip: Share your email in the Contact section if you need a formal response.');
+        add('Forged Support','Hello! How can we help? 🔥');
+      }
 
-    // Restore log
-    restore();
+      function send(){
+        const name = (nameEl.value||'You').trim();
+        const text = (inputEl.value||'').trim();
+        if (!text) return;
+        add(name, text, true);
+        inputEl.value='';
+      }
 
-    // Send handlers
-    btn.addEventListener('click', send);
-    msg.addEventListener('keydown', e=>{
-      if (e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); send(); }
-    });
+      sendBtn.addEventListener('click', send);
+      inputEl.addEventListener('keydown', e=>{ if (e.key==='Enter'){ e.preventDefault(); send(); }});
+      clearBtn.addEventListener('click', ()=>{ localStorage.removeItem(KEY); render(); });
 
-    // Clear chat
-    clearBtn.addEventListener('click', ()=>{
-      localStorage.removeItem(STORAGE_KEY);
-      log.innerHTML = '';
-      systemIntro();
-    });
-  })();
+      render();
+    })();
   </script>
 
-  <!-- PWA: register service worker (optional; safe if file exists) -->
+  <!-- PWA: register service worker (simple, safe) -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -702,4 +630,4 @@
     }
   </script>
 </body>
-              </html>
+</html>
