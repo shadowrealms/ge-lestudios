@@ -23,14 +23,18 @@
   <meta property="og:site_name" content="GE & LE Studios" />
   <meta property="og:title" content="The Forged Saga — GE & LE Studios" />
   <meta property="og:description" content="A mythic, cinematic fantasy where dragons rise, vows outlast death, and love becomes a weapon against the dark." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg" />
+  <!-- Use your local hero for share cards -->
+  <meta property="og:image" content="https://shadowrealms.github.io/forged-in-faith-born.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Performance hints -->
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://i.ytimg.com">
-  <link rel="preload" as="image" href="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg">
-  <link rel="preload" as="audio" href="/audio/forged-theme.mp3">
+  <!-- Preload hero (WebP preferred, JPG fallback is the <img> src) -->
+  <link rel="preload" as="image" href="/forged-in-faith-born.webp">
+  <link rel="preload" as="image" href="/forged-in-faith-born.jpg">
+  <!-- Preload theme audio at repo root -->
+  <link rel="preload" as="audio" href="/forged-theme.mp3">
 
   <style>
     :root{
@@ -55,12 +59,10 @@
     a{color:var(--gold-2); text-decoration:none}
     a:hover{opacity:.92}
 
-    /* Subtle fades */
     .fade-in{opacity:0; transform:translateY(6px); animation:fade 700ms ease forwards}
     .fade-in.delay{animation-delay:.18s}
     @keyframes fade{to{opacity:1; transform:none}}
 
-    /* COMING SOON banner */
     .banner{
       position:sticky; top:0; z-index:50;
       background:
@@ -145,7 +147,6 @@
     blockquote{margin:0; color:#e6e6e6}
     blockquote + blockquote{margin-top:10px}
 
-    /* Trailer + Soundtrack */
     #trailer{background:#000; box-shadow: inset 0 0 40px rgba(202,163,90,.22)}
     .trailers{display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
     .frame{
@@ -163,7 +164,6 @@
     .sound{display:grid; gap:16px; grid-template-columns:1fr; max-width:780px}
     .sound .panel{background:#0f0f11; border:1px solid rgba(226,199,120,.1); border-radius:14px; padding:16px}
 
-    /* Chat demo */
     .chat{background:#0a0a0c; border:1px solid rgba(226,199,120,.1); border-radius:16px; padding:16px}
     .chat .row{display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap}
     .chat .switch{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background:#0f0f11; border:1px solid var(--ring)}
@@ -177,7 +177,6 @@
     footer{border-top:1px solid rgba(226,199,120,.12); padding-bottom:40px}
     small{color:var(--muted)}
 
-    /* Contact form */
     form .row{display:grid; gap:12px; grid-template-columns:1fr 1fr}
     form .row > *{min-width:0}
     input, textarea{
@@ -186,7 +185,7 @@
     }
     textarea{min-height:120px; resize:vertical}
 
-    /* Praise */
+    /* Praise carousel */
     .praise-carousel{position:relative; margin-top:14px}
     .praise-track{
       display:grid; grid-auto-flow:column; grid-auto-columns:min(520px, 92vw);
@@ -217,7 +216,8 @@
 
   <!-- Hidden background audio + status -->
   <div id="audioStatus" aria-live="polite" style="position:absolute;left:-9999px"></div>
-  <audio id="bgm" src="audio/forged-theme.mp3" preload="none" loop></audio>
+  <!-- IMPORTANT: points to root file forged-theme.mp3 -->
+  <audio id="bgm" src="forged-theme.mp3" preload="none" loop></audio>
 
   <!-- COMING SOON BANNER -->
   <div class="banner" role="region" aria-label="Site status banner">
@@ -268,10 +268,14 @@
     <!-- HERO -->
     <section class="hero" id="home">
       <div class="wrap">
-        <img
-          class="hero-logo fade-in"
-          src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg"
-          alt="The Forged Saga — key art: silhouette before a towering dragon of flame" />
+        <picture>
+          <source srcset="forged-in-faith-born.webp" type="image/webp"/>
+          <img
+            class="hero-logo fade-in"
+            src="forged-in-faith-born.jpg"
+            alt="Forged in Faith — Born of the Forged poster"
+            width="1920" height="1080" />
+        </picture>
         <div class="tag fade-in delay">FORGED IN FAITH • THE FORGED SAGA</div>
         <h1 class="fade-in delay">The Forged Saga</h1>
         <p class="subtitle fade-in delay">A mythic, cinematic fantasy where dragons rise, vows outlast death, and love becomes a weapon against the dark.</p>
@@ -289,7 +293,7 @@
           <article class="card fade-in" aria-labelledby="b1-title">
             <div class="cover">
               <img loading="lazy" decoding="async"
-                   src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg"
+                   src="forged-in-faith-born.jpg"
                    alt="Key art — Book of the Forged" />
             </div>
             <div class="body">
@@ -322,7 +326,6 @@
           </article>
         </div>
 
-        <!-- Verses -->
         <div class="band fade-in" aria-label="Verses">
           <strong>Verses</strong>
           <blockquote>“The mountain did not split because of time or storm — it split because war demanded to be born.”</blockquote>
@@ -338,6 +341,18 @@
         <h2 id="posters-title">Posters</h2>
         <div class="grid">
           <article class="card fade-in">
+            <div class="cover">
+              <picture>
+                <source srcset="forged-in-faith-born.webp" type="image/webp"/>
+                <img loading="lazy" decoding="async"
+                     src="forged-in-faith-born.jpg"
+                     alt="Forged in Faith — Born of the Forged poster"
+                     width="960" height="540" />
+              </picture>
+            </div>
+            <div class="body"><div class="badge">Key Art</div><strong>Forged in Faith — Born of the Forged</strong></div>
+          </article>
+          <article class="card fade-in delay">
             <div class="cover">
               <img loading="lazy" decoding="async"
                    src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg"
@@ -365,8 +380,9 @@
         <div class="sound">
           <div class="panel">
             <strong>Theme: The Forged Saga</strong>
+            <!-- IMPORTANT: root file -->
             <audio controls preload="none" style="width:100%" aria-label="Play The Forged Saga theme">
-              <source src="audio/forged-theme.mp3" type="audio/mpeg" />
+              <source src="forged-theme.mp3" type="audio/mpeg" />
             </audio>
             <p style="margin:.6rem 0 0">
               Or <a class="btn secondary" href="https://drive.google.com/file/d/19TJ91Yygzz9OELdvauS7PAfSv0xVmEfF/view" target="_blank" rel="noopener">listen on Google Drive</a>
@@ -760,7 +776,6 @@
         render();
       }
 
-      // Seed welcome messages once
       if (!localStorage.getItem(KEY)){
         add('Forged Support','Welcome to GE & LE Studios! Ask about the books, rights, trailers, or production. 🔥');
         add('Forged Support','Tip: Share your email in the Contact section if you need a formal response.');
@@ -816,4 +831,4 @@
     }
   </script>
 </body>
-  </html>
+      </html>
