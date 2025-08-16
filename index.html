@@ -95,11 +95,18 @@
 
     footer{border-top:1px solid rgba(226,199,120,.12); padding-bottom:40px}
     small{color:var(--muted)}
+
+    /* ===== Reveal-on-scroll animations ===== */
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform:none}
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1 !important; transform:none !important; transition:none !important}
+    }
   </style>
 </head>
 <body>
 
-  <header>
+  <header class="reveal show">
     <div class="wrap">
       <nav>
         <div class="brand">
@@ -120,9 +127,8 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero" id="home">
+    <section class="hero reveal" id="home">
       <div class="wrap">
-        <!-- Use your *poster* as the hero for instant impact -->
         <img class="hero-logo" src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250816-031135_Gallery.jpg?raw=true" alt="The Forged Saga — key art" />
         <div class="tag">FORGED IN FAITH • THE FORGED SAGA</div>
         <h1>The Forged Saga</h1>
@@ -131,14 +137,14 @@
     </section>
 
     <!-- BOOKS -->
-    <section id="books">
+    <section id="books" class="reveal">
       <div class="wrap">
         <h2>Books</h2>
         <p class="subtitle">Two pillars of one destiny.</p>
 
         <div class="grid">
           <!-- Book One -->
-          <article class="card">
+          <article class="card reveal">
             <div class="cover">
               <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250816-031135_Gallery.jpg?raw=true" alt="Book of the Forged (temp art)" />
             </div>
@@ -154,7 +160,7 @@
           </article>
 
           <!-- Book Two -->
-          <article class="card">
+          <article class="card reveal">
             <div class="cover">
               <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250815-235522_Chrome.jpg?raw=true" alt="Forged of the Dragon (temp art)" />
             </div>
@@ -171,7 +177,7 @@
         </div>
 
         <!-- Verses -->
-        <div class="band">
+        <div class="band reveal">
           <strong>Verses</strong>
           <blockquote>“The mountain did not split because of time or storm — it split because war demanded to be born.”</blockquote>
           <blockquote>“Beneath the weight of shadow, the Forged do not bow — they burn.”</blockquote>
@@ -181,17 +187,17 @@
     </section>
 
     <!-- POSTERS / GALLERY -->
-    <section id="posters">
+    <section id="posters" class="reveal">
       <div class="wrap">
         <h2>Posters</h2>
         <div class="grid">
-          <article class="card">
+          <article class="card reveal">
             <div class="cover">
               <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250816-031135_Gallery.jpg?raw=true" alt="Poster — Book of the Forged" />
             </div>
             <div class="body"><div class="badge">Key Art</div><strong>Book of the Forged</strong></div>
           </article>
-          <article class="card">
+          <article class="card reveal">
             <div class="cover">
               <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250815-235522_Chrome.jpg?raw=true" alt="Poster — Forged of the Dragon" />
             </div>
@@ -202,15 +208,13 @@
     </section>
 
     <!-- SOUNDTRACK -->
-    <section id="soundtrack">
+    <section id="soundtrack" class="reveal">
       <div class="wrap">
         <h2>Soundtrack</h2>
         <p class="subtitle">Music by Darrin Williams. Full OST coming soon.</p>
         <div class="sound">
-          <div class="panel">
+          <div class="panel reveal">
             <strong>Theme: The Forged Saga</strong>
-            <!-- Browsers can't stream directly from Google Drive preview links.
-                 Host an .mp3 in this repo (e.g., /audio/forged-theme.mp3) and update the src: -->
             <audio controls preload="none" style="width:100%">
               <source src="audio/forged-theme.mp3" type="audio/mpeg" />
             </audio>
@@ -223,9 +227,9 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about">
+    <section id="about" class="reveal">
       <div class="wrap">
-        <div class="band">
+        <div class="band reveal">
           <h2 style="margin:0 0 6px;">About the Forged Saga</h2>
           <p>The Forged Saga is an epic fantasy journey spanning realms of fire, shadow, and light. Across
              <em>Book of the Forged</em> and <em>Forged of the Dragon</em>, Stephen’s destiny unfolds—bound to dragons, haunted by prophecy, and driven by a love powerful enough to defy death itself.</p>
@@ -235,11 +239,12 @@
     </section>
 
     <!-- TRAILER -->
-    <section id="trailer">
+    <section id="trailer" class="reveal">
       <div class="wrap">
         <h2 style="color:var(--gold); text-shadow:0 0 10px rgba(202,163,90,.7)">Official Cinematic Trailers</h2>
         <div class="trailers">
-          <div class="frame">
+          <!-- Trailer A -->
+          <div class="frame reveal">
             <h3>Teaser A</h3>
             <div class="yt">
               <iframe
@@ -250,11 +255,15 @@
               </iframe>
             </div>
           </div>
-          <div class="frame">
+          <!-- Trailer B -->
+          <div class="frame reveal">
+            <div style="display:inline-block; background:var(--accent); color:#fff; font-size:.7rem; font-weight:bold; letter-spacing:.12em; padding:4px 8px; border-radius:6px; margin-bottom:6px;">
+              NEW
+            </div>
             <h3>Teaser B</h3>
             <div class="yt">
               <iframe
-                src="https://www.youtube.com/embed/VIDEO_ID"
+                src="https://www.youtube.com/embed/RMny5gzN4A4?autoplay=1&mute=1&loop=1&playlist=RMny5gzN4A4"
                 title="The Forged Saga — Teaser B"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen loading="lazy">
@@ -266,9 +275,9 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
+    <section id="contact" class="reveal">
       <div class="wrap">
-        <div class="band">
+        <div class="band reveal">
           <h2 style="margin-top:0;">Contact & Materials</h2>
           <p>For requests, materials, or rights inquiries, reach out via our site or social channels. A press kit and chapter samples are available upon request.</p>
         </div>
@@ -276,13 +285,29 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="reveal">
     <div class="wrap" style="text-align:center; padding-top:22px">
-      <img src="gl-logo.jpg" alt="GE & LE Studios" style="width:68px; height:68px; border-radius:50%; box-shadow:0 0 18px rgba(202,163,90,.3)" />
+      <img src="gl-logo.jpg" alt="GE & LE Studios" style="width:68px; height:68px; border-radius:50%; box-shadow:0 0 18px rgba(0,0,0,.3)" />
       <p style="margin:10px 0 6px;">© 2025 GE &amp; LE Studios</p>
       <small>Forged in Faith • The Forged Saga</small>
     </div>
   </footer>
 
+  <!-- Reveal-on-scroll script -->
+  <script>
+  (function(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = Array.from(document.querySelectorAll('.reveal'));
+    const io = new IntersectionObserver((entries)=>{
+      for (const e of entries){
+        if (e.isIntersecting){
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      }
+    }, {threshold:.2});
+    els.forEach(el=>io.observe(el));
+  })();
+  </script>
 </body>
-</html>
+  </html>
