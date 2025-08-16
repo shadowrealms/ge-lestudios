@@ -3,8 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>G&L Studios — ShadowRealms</title>
-  <meta name="description" content="The ShadowRealms saga by G&L Studios — Forged in Faith and Dragon of the Forged." />
+  <title>GE & LE Studios — The Forged Saga</title>
+  <meta name="description" content="The Forged Saga by GE & LE Studios — Book 1: Book of the Forged. Book 2: Forged of the Dragon. Cinematic fantasy forged in faith and dragonfire." />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="preconnect" href="https://i.ytimg.com">
+  <link rel="preconnect" href="https://www.youtube.com">
+
   <style>
     :root{
       --bg:#0a0a0b; --panel:#121214; --text:#f3f3f3;
@@ -22,6 +26,7 @@
         var(--bg);
       line-height:1.65;
     }
+    img{max-width:100%; display:block}
     a{color:var(--gold-2); text-decoration:none}
     a:hover{opacity:.9}
 
@@ -34,7 +39,8 @@
     .nav{display:flex; align-items:center; gap:16px; padding:10px 0}
     .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.06em}
     .brand img{width:40px; height:40px; border-radius:50%; box-shadow:0 0 14px rgba(202,163,90,.35)}
-    .nav a{margin-left:auto; padding:8px 10px; opacity:.85}
+    .nav .spacer{flex:1}
+    .nav a{padding:8px 10px; opacity:.85}
     .nav a:hover{color:var(--gold-2); opacity:1}
 
     .hero{padding:84px 0 56px; text-align:center}
@@ -45,6 +51,7 @@
 
     section{padding:64px 0}
     h2{font-size:clamp(1.6rem,3.3vw,2.2rem); margin:0 0 8px}
+
     .grid{
       display:grid; gap:22px;
       grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
@@ -55,7 +62,7 @@
       border-radius:16px; overflow:hidden;
     }
     .cover{aspect-ratio:3/4; background:#0f0f12; border-bottom:1px solid rgba(226,199,120,.08)}
-    .cover img{width:100%; height:100%; object-fit:cover; display:block}
+    .cover img{width:100%; height:100%; object-fit:cover}
     .body{padding:18px; display:grid; gap:10px}
     .badge{font-size:.74rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-2)}
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:4px}
@@ -68,6 +75,15 @@
     .band{margin-top:22px; padding:22px; border-radius:14px; background:rgba(255,255,255,.02); border:1px solid rgba(226,199,120,.08)}
     blockquote{margin:0; color:#e6e6e6}
     blockquote + blockquote{margin-top:10px}
+
+    /* Posters */
+    .posters{display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(220px,1fr))}
+    .poster{
+      background:var(--panel); border:1px solid rgba(226,199,120,.08);
+      border-radius:14px; overflow:hidden;
+    }
+    .poster img{aspect-ratio:2/3; width:100%; height:100%; object-fit:cover}
+    .poster figcaption{padding:10px 12px; font-size:.95rem; color:var(--muted)}
 
     /* Trailer area */
     #trailer{background:#000; box-shadow: inset 0 0 40px rgba(202,163,90,.22)}
@@ -84,6 +100,13 @@
     }
     .yt iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
 
+    /* Soundtrack */
+    .audioCard{
+      background:var(--panel); border:1px solid rgba(226,199,120,.08);
+      border-radius:16px; padding:18px; display:grid; gap:10px
+    }
+    .audioMeta{color:var(--muted); font-size:.95rem}
+
     footer{border-top:1px solid rgba(226,199,120,.12); padding-bottom:40px}
     small{color:var(--muted)}
   </style>
@@ -93,10 +116,14 @@
   <header>
     <div class="wrap nav">
       <div class="brand">
-        <img src="gl-logo.jpg" alt="G&L Studios logo" />
-        <span>G&L STUDIOS</span>
+        <!-- Keep this filename in your repo root: gl-logo.jpg -->
+        <img src="gl-logo.jpg" alt="GE & LE Studios logo" />
+        <span>GE &amp; LE STUDIOS</span>
       </div>
+      <div class="spacer"></div>
       <a href="#books">Books</a>
+      <a href="#posters">Posters</a>
+      <a href="#soundtrack">Soundtrack</a>
       <a href="#trailer">Trailer</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -107,9 +134,9 @@
     <!-- HERO -->
     <section class="hero">
       <div class="wrap">
-        <img class="hero-logo" src="cover-forged-in-faith.jpg" alt="Forged in Faith cover" />
-        <div class="tag">FORGED IN FAITH • BORN OF THE FORGED</div>
-        <h1>ShadowRealms Saga</h1>
+        <img class="hero-logo" src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250815-235522_Chrome.jpg?raw=true" alt="The Forged Saga — hero art" />
+        <div class="tag">FORGED IN FAITH • THE FORGED SAGA</div>
+        <h1>The Forged Saga</h1>
         <p class="subtitle">A mythic, cinematic fantasy where dragons rise, vows outlast death, and love becomes a weapon against the dark.</p>
       </div>
     </section>
@@ -124,11 +151,11 @@
           <!-- Book One -->
           <article class="card">
             <div class="cover">
-              <img src="cover-forged-in-faith.jpg" alt="Forged in Faith cover" />
+              <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250816-031135_Gallery.jpg?raw=true" alt="Book of the Forged cover (temporary art)" />
             </div>
             <div class="body">
               <div class="badge">Book One</div>
-              <h3>ShadowRealms: <em>Book of the Forged</em></h3>
+              <h3><em>Book of the Forged</em></h3>
               <p>Stephen steps beyond the veil where fate is carved in flame and shadow. Forged by trials of heart and soul, he must claim his place before darkness swallows the realms.</p>
               <div class="cta">
                 <a class="btn" href="#trailer">Watch Teaser</a>
@@ -140,12 +167,12 @@
           <!-- Book Two -->
           <article class="card">
             <div class="cover">
-              <img src="cover-dragon-of-the-forged.jpg" alt="Dragon of the Forged cover" />
+              <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250815-235522_Chrome.jpg?raw=true" alt="Forged of the Dragon cover (temporary art)" />
             </div>
             <div class="body">
               <div class="badge">Book Two</div>
-              <h3>ShadowRealms: <em>Dragon of the Forged</em></h3>
-              <p>Beyond the ash-line where memory bites like frost and prophecy burns like iron, the Book of the Forged opens to a page written in blood—and dragons remember their names.</p>
+              <h3><em>Forged of the Dragon</em></h3>
+              <p>In the heart of battle, mortal and dragon souls unite. Prophecy burns like iron, memory bites like frost, and love learns to wield wings.</p>
               <div class="cta">
                 <a class="btn" href="#trailer">Watch Teaser</a>
                 <a class="btn secondary" href="#about">See Highlights</a>
@@ -164,13 +191,52 @@
       </div>
     </section>
 
+    <!-- POSTERS -->
+    <section id="posters">
+      <div class="wrap">
+        <h2>Posters</h2>
+        <p class="subtitle">Concept posters and early key art. Final designs coming with the soundtrack drop.</p>
+        <div class="posters">
+          <figure class="poster">
+            <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250816-031135_Gallery.jpg?raw=true" alt="Poster — The Whispering Ember" />
+            <figcaption>The Whispering Ember</figcaption>
+          </figure>
+          <figure class="poster">
+            <img src="https://github.com/shadowrealms/ge-lestudios/blob/main/Screenshot_20250815-235522_Chrome.jpg?raw=true" alt="Poster — The Forged Saga" />
+            <figcaption>The Forged Saga</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOUNDTRACK -->
+    <section id="soundtrack">
+      <div class="wrap">
+        <h2>Original Soundtrack</h2>
+        <div class="audioCard">
+          <strong>“Forged Theme (Preview)” — Darrin Williams</strong>
+          <p class="audioMeta">Composed for The Forged Saga. Final OST coming soon.</p>
+
+          <!-- Google Drive streams can be finicky. This uses the direct-download endpoint.
+               If it ever fails to play inline, the link below lets visitors open it. -->
+          <audio controls preload="none">
+            <source src="https://drive.google.com/uc?export=download&id=19TJ91Yygzz9OELdvauS7PAfSv0xVmEfF" type="audio/mpeg" />
+            Your browser can’t play the audio. 
+          </audio>
+          <p class="audioMeta">
+            Having trouble? <a href="https://drive.google.com/file/d/19TJ91Yygzz9OELdvauS7PAfSv0xVmEfF/view" target="_blank" rel="noopener">Open the track on Google Drive</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ABOUT -->
     <section id="about">
       <div class="wrap">
         <div class="band">
           <h2 style="margin:0 0 6px;">About the Forged Saga</h2>
           <p>The Forged Saga is an epic fantasy journey spanning realms of fire, shadow, and light. Across
-             <em>Book of the Forged</em> and <em>Dragon of the Forged</em>, Stephen’s destiny unfolds—bound to dragons, haunted by prophecy, and driven by a love powerful enough to defy death itself.</p>
+             <em>Book of the Forged</em> and <em>Forged of the Dragon</em>, Stephen’s destiny unfolds—bound to dragons, haunted by prophecy, and driven by a love powerful enough to defy death itself.</p>
           <p style="margin:0; font-style:italic; color:var(--muted)">“Two souls. One flame. Forged to change the fate of worlds.”</p>
         </div>
       </div>
@@ -182,31 +248,26 @@
         <h2 style="color:var(--gold); text-shadow:0 0 10px rgba(202,163,90,.7)">Official Cinematic Trailers</h2>
 
         <div class="trailers">
-          <!-- Trailer A (your YouTube Short) -->
+          <!-- Trailer A -->
           <div class="frame">
             <h3>Teaser A</h3>
             <div class="yt">
               <iframe
                 src="https://www.youtube.com/embed/a0Aun_uEmL0"
-                title="ShadowRealms Teaser A"
+                title="The Forged Saga — Teaser A"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen loading="lazy">
               </iframe>
             </div>
           </div>
-<!-- Background Music -->
-<audio autoplay loop hidden>
-  <source src="https://drive.google.com/uc?export=download&id=19TJ91Yygzz9OELdvauS7PAfSv0xVmEfF" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-          <!-- Trailer B (replace VIDEO_ID when you have it) -->
+
+          <!-- Trailer B (replace VIDEO_ID when ready) -->
           <div class="frame">
             <h3>Teaser B</h3>
             <div class="yt">
-              <!-- TODO: replace VIDEO_ID with your second trailer’s id -->
               <iframe
                 src="https://www.youtube.com/embed/VIDEO_ID"
-                title="ShadowRealms Teaser B"
+                title="The Forged Saga — Teaser B"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen loading="lazy">
               </iframe>
@@ -229,11 +290,12 @@
 
   <footer>
     <div class="wrap" style="text-align:center; padding-top:22px">
-      <img src="gl-logo.jpg" alt="G&L Studios" style="width:68px; height:68px; border-radius:50%; box-shadow:0 0 18px rgba(202,163,90,.3)" />
-      <p style="margin:10px 0 6px;">© G&L Studios</p>
-      <small>Forged in Faith • Born of the Forged</small>
+      <!-- Logo again for the footer -->
+      <img src="gl-logo.jpg" alt="GE & LE Studios" style="width:68px; height:68px; border-radius:50%; box-shadow:0 0 18px rgba(202,163,90,.3)" />
+      <p style="margin:10px 0 6px;">© 2025 GE &amp; LE Studios</p>
+      <small>Forged in Faith • The Forged Saga</small>
     </div>
   </footer>
 
 </body>
-  <html/>
+</html>
