@@ -9,31 +9,26 @@
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta name="theme-color" content="#0a0a0b" />
 
-  <!-- Canonical / Sitemap -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://shadowrealms.github.io/" />
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-
-  <!-- Icons / PWA -->
-  <link rel="icon" type="image/jpeg" href="gl-logo.jpg" />
-  <link rel="apple-touch-icon" href="gl-logo.jpg" />
-  <link rel="manifest" href="/manifest.webmanifest" />
 
   <!-- Social cards -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="GE & LE Studios" />
   <meta property="og:title" content="The Forged Saga — GE & LE Studios" />
   <meta property="og:description" content="A mythic, cinematic fantasy where dragons rise, vows outlast death, and love becomes a weapon against the dark." />
-  <!-- Use your local hero for share cards -->
   <meta property="og:image" content="https://shadowrealms.github.io/forged-in-faith-born.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/jpeg" href="gl-logo.jpg" />
+  <link rel="apple-touch-icon" href="gl-logo.jpg" />
 
   <!-- Performance hints -->
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://i.ytimg.com">
-  <!-- Preload hero (WebP preferred, JPG fallback is the <img> src) -->
   <link rel="preload" as="image" href="/forged-in-faith-born.webp">
   <link rel="preload" as="image" href="/forged-in-faith-born.jpg">
-  <!-- Preload theme audio at repo root -->
   <link rel="preload" as="audio" href="/forged-theme.mp3">
 
   <style>
@@ -216,7 +211,6 @@
 
   <!-- Hidden background audio + status -->
   <div id="audioStatus" aria-live="polite" style="position:absolute;left:-9999px"></div>
-  <!-- IMPORTANT: points to root file forged-theme.mp3 -->
   <audio id="bgm" src="forged-theme.mp3" preload="none" loop></audio>
 
   <!-- COMING SOON BANNER -->
@@ -326,6 +320,7 @@
           </article>
         </div>
 
+        <!-- Verses -->
         <div class="band fade-in" aria-label="Verses">
           <strong>Verses</strong>
           <blockquote>“The mountain did not split because of time or storm — it split because war demanded to be born.”</blockquote>
@@ -380,7 +375,6 @@
         <div class="sound">
           <div class="panel">
             <strong>Theme: The Forged Saga</strong>
-            <!-- IMPORTANT: root file -->
             <audio controls preload="none" style="width:100%" aria-label="Play The Forged Saga theme">
               <source src="forged-theme.mp3" type="audio/mpeg" />
             </audio>
@@ -822,13 +816,38 @@
   })();
   </script>
 
-  <!-- PWA: register service worker (simple, safe) -->
+  <!-- Inline Service Worker (no external file needed) -->
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(()=>{});
-      });
-    }
+    (function(){
+      if(!('serviceWorker' in navigator)) return;
+      const swCode = `
+        const CACHE = 'forged-v1';
+        const ASSETS = [
+          '/', '/index.html',
+          '/gl-logo.jpg',
+          '/forged-in-faith-born.jpg',
+          '/forged-in-faith-born.webp',
+          '/forged-theme.mp3'
+        ];
+        self.addEventListener('install', e=>{
+          e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS).catch(()=>{})));
+        });
+        self.addEventListener('activate', e=>{
+          e.waitUntil(caches.keys().then(keys=>Promise.all(
+            keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))
+          )));
+        });
+        self.addEventListener('fetch', e=>{
+          const url = new URL(e.request.url);
+          if (url.origin === location.origin) {
+            e.respondWith(caches.match(e.request).then(r=> r || fetch(e.request)));
+          }
+        });
+      `;
+      const blob = new Blob([swCode], {type:'text/javascript'});
+      const swURL = URL.createObjectURL(blob);
+      window.addEventListener('load', ()=> navigator.serviceWorker.register(swURL).catch(()=>{}));
+    })();
   </script>
 </body>
-      </html>
+</html>
