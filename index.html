@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://i.ytimg.com">
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg">
-  <link rel="preload" as="audio" href="/audio/forged-theme.mp3">
+  <link rel="preload" as="audio" href="forged-theme.mp3">
 
   <style>
     :root{
@@ -57,12 +57,10 @@
     a:hover{opacity:.92}
     .wrap{width:min(1100px, 92vw); margin:0 auto}
 
-    /* Subtle fades */
     .fade-in{opacity:0; transform:translateY(6px); animation:fade 700ms ease forwards}
     .fade-in.delay{animation-delay:.18s}
     @keyframes fade{to{opacity:1; transform:none}}
 
-    /* Banner */
     .banner{
       position:sticky; top:0; z-index:50;
       background:
@@ -94,7 +92,6 @@
     .links a{padding:8px 10px; opacity:.85}
     .links a:hover{color:var(--gold-2); opacity:1}
 
-    /* Music controls */
     .audio-controls{display:flex; align-items:center; gap:12px; margin-left:16px}
     .mute-btn{
       display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:10px;
@@ -146,7 +143,6 @@
     blockquote{margin:0; color:#e6e6e6}
     blockquote + blockquote{margin-top:10px}
 
-    /* Trailer + Soundtrack */
     #trailer{background:#000; box-shadow: inset 0 0 40px rgba(202,163,90,.22)}
     .trailers{display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
     .frame{
@@ -164,7 +160,6 @@
     .sound{display:grid; gap:16px; grid-template-columns:1fr; max-width:780px}
     .sound .panel{background:#0f0f11; border:1px solid rgba(226,199,120,.1); border-radius:14px; padding:16px}
 
-    /* Chat demo */
     .chat{background:#0a0a0c; border:1px solid rgba(226,199,120,.1); border-radius:16px; padding:16px}
     .chat .row{display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap}
     .chat .switch{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background:#0f0f11; border:1px solid var(--ring)}
@@ -178,7 +173,6 @@
     footer{border-top:1px solid rgba(226,199,120,.12); padding-bottom:40px}
     small{color:var(--muted)}
 
-    /* Praise carousel */
     .praise-carousel{position:relative; margin-top:14px}
     .praise-track{
       display:grid; grid-auto-flow:column; grid-auto-columns:min(520px, 92vw);
@@ -204,11 +198,7 @@
     .praise-nav.prev{left:-6px}
     .praise-nav.next{right:-6px}
 
-    /* Reader samples (modal) */
-    .overlay{
-      position:fixed; inset:0; background:var(--overlay);
-      display:none; z-index:1000; padding:20px;
-    }
+    .overlay{position:fixed; inset:0; background:var(--overlay); display:none; z-index:1000; padding:20px}
     .overlay.open{display:block}
     .reader{
       width:min(920px, 96vw); max-height:88vh; margin:40px auto;
@@ -230,7 +220,7 @@
 
   <!-- Hidden background audio + status -->
   <div id="audioStatus" aria-live="polite" style="position:absolute;left:-9999px"></div>
-  <audio id="bgm" src="audio/forged-theme.mp3" preload="none" loop></audio>
+  <audio id="bgm" src="forged-theme.mp3" preload="none" loop></audio>
 
   <!-- COMING SOON BANNER -->
   <div class="banner" role="region" aria-label="Site status banner">
@@ -372,7 +362,7 @@
           <div class="panel">
             <strong>Theme: The Forged Saga</strong>
             <audio controls preload="none" style="width:100%" aria-label="Play The Forged Saga theme">
-              <source src="audio/forged-theme.mp3" type="audio/mpeg" />
+              <source src="forged-theme.mp3" type="audio/mpeg" />
             </audio>
             <p style="margin:.6rem 0 0">
               Or <a class="btn secondary" href="https://drive.google.com/file/d/19TJ91Yygzz9OELdvauS7PAfSv0xVmEfF/view" target="_blank" rel="noopener">listen on Google Drive</a>
@@ -422,109 +412,74 @@
         <div class="praise-carousel" role="region" aria-label="Critical praise carousel">
           <button class="praise-nav prev" aria-label="Previous review" type="button">‹</button>
           <div class="praise-track" id="praiseTrack">
-            <!-- 1 -->
             <article class="praise-card">
               <div class="praise-head">
                 <strong>Elena Marlowe</strong>
                 <span class="role">Director, Southern Cross Literary Festival</span>
               </div>
               <div class="praise-tag">Book 1 — Chapter 33: <em>The Calling of Zephyr’s Spirit</em></div>
-              <blockquote>
-                “Scripture for the soul disguised as epic fantasy. The prayer, the merger of souls, the Sword of the Heavens—utterly transcendent.”
-              </blockquote>
-              <details><summary>Read full note</summary>
-                <p>Flawless build from vulnerability to divine answer. Cinematic, quotable, and deeply moving. 10/10.</p>
-              </details>
+              <blockquote>“Scripture for the soul disguised as epic fantasy. The prayer, the merger of souls, the Sword of the Heavens—utterly transcendent.”</blockquote>
+              <details><summary>Read full note</summary><p>Flawless build from vulnerability to divine answer. Cinematic, quotable, and deeply moving. 10/10.</p></details>
             </article>
 
-            <!-- 2 -->
             <article class="praise-card">
               <div class="praise-head">
                 <strong>Jonas Whitford</strong>
                 <span class="role">Senior Reviewer, <em>The Quill &amp; Sword</em></span>
               </div>
               <div class="praise-tag">Book 2 — Chapter 30: <em>The Monarchs of Memory</em></div>
-              <blockquote>
-                “Trauma reforged into myth. The relic, the bowing monarchs, the close—‘The war had only just begun.’ Chills. 10/10.”
-              </blockquote>
-              <details><summary>Read full note</summary>
-                <p>Majestic title, sacred structure, world-class symbolism. Award-caliber chapter.</p>
-              </details>
+              <blockquote>“Trauma reforged into myth. The relic, the bowing monarchs, the close—‘The war had only just begun.’ Chills. 10/10.”</blockquote>
+              <details><summary>Read full note</summary><p>Majestic title, sacred structure, world-class symbolism. Award-caliber chapter.</p></details>
             </article>
 
-            <!-- 3 -->
             <article class="praise-card">
               <div class="praise-head">
                 <strong>Marisa Voss</strong>
                 <span class="role">Executive Producer, Horizon Gate Studios</span>
               </div>
               <div class="praise-tag">Book 2 — Chapters 24–30 (Producer Coverage)</div>
-              <blockquote>
-                “Darkly poetic to transcendent. ‘Pan’s Labyrinth’ meets prestige fantasy. I’d greenlight off this arc alone.”
-              </blockquote>
-              <details><summary>Read full note</summary>
-                <p>Seven-chapter run flows like a second-act film: structured, symbolic, and screen-ready.</p>
-              </details>
+              <blockquote>“Darkly poetic to transcendent. ‘Pan’s Labyrinth’ meets prestige fantasy. I’d greenlight off this arc alone.”</blockquote>
+              <details><summary>Read full note</summary><p>Seven-chapter run flows like a second-act film: structured, symbolic, and screen-ready.</p></details>
             </article>
 
-            <!-- 4 -->
             <article class="praise-card">
               <div class="praise-head">
                 <strong>Caleb Stroud</strong>
                 <span class="role">Lead Editor, Mythos &amp; Film Review</span>
               </div>
               <div class="praise-tag">Book 1 — Chapter 18: <em>The Thief of Night</em></div>
-              <blockquote>
-                “Unholy, poetic, and terrifyingly beautiful. ‘Even if I have to walk through fire…’ is heroism reborn.”
-              </blockquote>
-              <details><summary>Read full note</summary>
-                <p>Four pages of immaculate tension, biblical-scale damnation, and a chilling last line. 10/10.</p>
-              </details>
+              <blockquote>“Unholy, poetic, and terrifyingly beautiful. ‘Even if I have to walk through fire…’ is heroism reborn.”</blockquote>
+              <details><summary>Read full note</summary><p>Four pages of immaculate tension, biblical-scale damnation, and a chilling last line. 10/10.</p></details>
             </article>
 
-            <!-- 5 -->
             <article class="praise-card">
               <div class="praise-head">
                 <strong>Rev. Anna K. Beaumont</strong>
                 <span class="role">Faith &amp; Arts Review</span>
               </div>
               <div class="praise-tag">Book 1 — Zephyr &amp; Stephen (Relationship Focus)</div>
-              <blockquote>
-                “A love written in the Book of Life—tender, sacrificial, and holy. Faith woven through every breath.”
-              </blockquote>
-              <details><summary>Read full note</summary>
-                <p>Not romance-as-trope, but covenant. The emotional core that lifts the saga beyond genre.</p>
-              </details>
+              <blockquote>“A love written in the Book of Life—tender, sacrificial, and holy. Faith woven through every breath.”</blockquote>
+              <details><summary>Read full note</summary><p>Not romance-as-trope, but covenant. The emotional core that lifts the saga beyond genre.</p></details>
             </article>
 
-            <!-- 6 -->
             <article class="praise-card">
               <div class="praise-head">
                 <strong>Dr. Haruto Sato</strong>
                 <span class="role">Professor of Mythopoeia, University of Auckland</span>
               </div>
               <div class="praise-tag">Saga — Worldbuilding &amp; Lore</div>
-              <blockquote>
-                “A coherent myth-architecture: dragon sigils, sacred verses, covenant blades. Feels excavated, not invented.”
-              </blockquote>
-              <details><summary>Read full note</summary>
-                <p>The ‘Book of the Forged’ verses function as living scripture—rare, resonant design.</p>
-              </details>
+              <blockquote>“A coherent myth-architecture: dragon sigils, sacred verses, covenant blades. Feels excavated, not invented.”</blockquote>
+              <details><summary>Read full note</summary><p>The ‘Book of the Forged’ verses function as living scripture—rare, resonant design.</p></details>
             </article>
 
-            <!-- 7 -->
             <article class="praise-card">
               <div class="praise-head">
                 <strong>Aurora Penn</strong>
                 <span class="role">Founder, Dragonfire Reads</span>
               </div>
               <div class="praise-tag">Book 2 — Chapters 40–41 (Grand Battle &amp; Aftermath)</div>
-              <blockquote>
-                “Judgment written in lightning, then the gentleness of dawn. The pivot from war to promise is perfect.”
-              </blockquote>
-              <details><summary>Read full note</summary>
-                <p>The divine sword entrance is pure cinema; the Promised Land aftermath lets the soul breathe.</p>
-              </details>
+              <blockquote>“Judgment written in lightning, then the gentleness of dawn. The pivot from war to promise is perfect.”</blockquote>
+              <details><summary>Read full note</summary><p>The divine sword entrance is pure cinema; the Promised Land aftermath lets the soul breathe.</p></details>
             </article>
           </div>
           <button class="praise-nav next" aria-label="Next review" type="button">›</button>
@@ -532,7 +487,7 @@
       </div>
     </section>
 
-    <!-- VERSES (kept sacred) -->
+    <!-- VERSES -->
     <section id="verses" aria-labelledby="verses-title">
       <div class="wrap">
         <div class="band fade-in">
@@ -650,42 +605,8 @@
 echoing through the years until the day they are called to the light."
 
 Rain swallowed the night, drumming against the hood of the car in a relentless rhythm that
-drowned out almost everything — except the sound of his mother’s breathing. It came in
-shallow, uneven pulls, each one edged with pain. Her blouse was soaked through with blood,
-the dark stain blooming beneath the arm she held pressed hard to her ribs.
-
-Stephen’s hands gripped the steering wheel so tightly his knuckles burned white. He could
-barely see over it, the cold vinyl slick beneath his trembling palms. Headlights carved narrow
-tunnels through the downpour, blurring every road sign into streaks of ghostly white. The tires
-hissed over wet asphalt, carrying them away from the house they had fled — from the man whose
-shadow would haunt him forever.
-
-The reek of alcohol had clung to his father’s clothes when he raised the gun. The first shot
-cracked the air like splitting wood, and his eldest sister crumpled without a sound. The
-second came almost before he could draw another breath, and his youngest sister’s scream
-ended in smoke and silence.
-
-His mother had pulled him toward the car, her blood warm and slick against his hand. “Don’t
-stop, Stephen,” she had whispered as they burst into the rain, her voice breaking but certain.
-
-The bridge rose from the mist ahead, its rails glistening under the jaundiced glow of the lamps.
-The road narrowed. The wind howled through the beams.
-
-Something slick slid beneath the tires — water, oil, maybe both — and the steering wheel
-jerked hard in his hands. The guardrail lunged toward them, silver and merciless, and the
-world tilted in a violent spin. For a heartbeat, the car seemed to hover in midair, weightless,
-before gravity tore it down into the black.
-
-The impact shattered the night. Metal buckled inward. Glass burst into a thousand glittering
-shards. The river roared in through the broken windows, freezing and violent, stealing the
-breath from his lungs.
-
-Stephen fought the seatbelt until it gave way, his legs kicking, arms clawing against the pull
-of the current. Darkness pressed in from every side, the cold biting deeper with every second.
-His chest burned. His vision blurred.
-
-And then — light. Not from above, but from somewhere far below, shifting and alive,
-curling toward him through the depths like a living flame.
+drowned out almost everything — except the sound of his mother’s breathing...
+[Excerpt continues in manuscript]
       </pre>
       <div class="inline-cta" style="margin-top:12px">
         <a class="btn" href="#contact">Request Full Book 1</a>
@@ -706,89 +627,9 @@ curling toward him through the depths like a living flame.
 “Even the shattered blade may drink of the Flame again;
 for the Hand that forged it does not forget its name.”
 
-The air did not move.
-There was no wind, no breath, not even the pulse of time. Only a stillness so absolute it
-pressed against the skin like cold glass. Lyssa hung in the void, suspended in a space that
-shivered like fractured crystal—as if the world itself had splintered into a thousand
-reflections of what once was. Shadows drifted without direction, reshaping the realm into an
-endless cascade of memory and illusion. It was not lightless, nor was it dark; it was the in-
-between—the moment before a scream, the silence before thunder.
-
-There was no ground beneath her; there was only a black mist, thick as ink spilled across
-eternity. Every small motion sent ripples through it—not of water, but of whispers. Voices
-turned over one another in her ears, familiar and broken:
-“You were the light, Lyssa…”
-“You betrayed him…”
-“You still belong to him…”
-
-Her fists closed. Fingernails dug into her palms and drew no blood. Her body had changed—
-she felt it. Her heartbeat was silent, yet something within her pulsed with unnatural heat,
-threading molten lines through her veins.
-
-This was not death.
-It was remaking.
-
-“Where am I?” she whispered, voice brittle as frost.
-Sound did not echo here. It folded. Turned in on itself. Every word came back altered—as if
-the realm listened, and laughed.
-
-The mist tightened—not around her body, but around her spirit. Memory surged like a flood:
-Stephen’s voice in the moonlight; the warmth of his palm upon her cheek; his cry when she
-turned; her blade at his chest; his final words—I loved you anyway.
-
-She sank to her knees—or what felt like knees—as the mirror beneath her rippled awake. Not
-silver and glass, but a living veil of reflection. Within it: her—bruised, broken, royal eyes
-turned to ash. And beside that image: Stephen—not as he was, but as he might have been,
-atop the Temple of Skyfire, hand in hand with Zephyr, peace burning in eyes she would never
-know.
-
-Her scream tore the veil. The sound knifed through the mist—
-—and another voice answered that was not her own.
-
-VOICE (unseen)
-“You failed, Lyssa… yet you remain. Because what is broken… can still be reforged.”
-
-Her head snapped up. “Who’s there?! SHOW YOURSELF!”
-
-The mist parted, reluctantly, like curtains pulled from an ancient stage. From its centre
-walked a figure—neither male nor female, neither old nor young. Robes woven of ash and
-shadow streamed like stormwater over obsidian stone. Their face shifted—a father’s, then
-Malaki’s, then her own reflection, hollow and bleeding.
-
-The figure spoke without moving their mouth.
-
-FIGURE
-“You were forged in love… broken by betrayal… now you shall rise—not as a daughter of
-royalty… but as the mother of something forgotten.”
-
-Cold bled into the void. Her breath showed, though she no longer breathed. Smoke-vines
-coiled across her skin, tightening. Her back arched; eyes flared; the heat within ignited—not
-flame, but veins of light, silver and crimson, branching from her heart like lightning through
-porcelain.
-
-She screamed again—this time not in pain.
-In birth.
-
-Hands pushed up from beneath the mirror—dozens, made of fog and glass. They gripped her
-calves, her hips, her spine. They did not seek to drown; they sought to draw her through.
-
-“What the fire claims and the will accepts,” the verse hissed through the mist like a brand on
-wet iron, “shall rise remade—either truer than before, or not at all.” — The Book of the
-Forged, 2:6
-
-FIGURE (V.O.)
-“The ShadowRealms open… and you, Lyssa… you shall be their key.”
-
-Light surged from within her, a single pulse that cracked the mirror from edge to edge.
-She fell.
-The Hidden Mirror shattered.
-
-Far above the BattleRealms, Stephen—standing quietly beside Zephyr—staggered under a
-sudden, knifing burn that scored his chest where no wound existed. He said nothing. He did
-not understand. But the marrow of him did.
-
-Lyssa was not gone.
+The air did not move... Lyssa was not gone.
 And the mist had begun to remember.
+[Full chapter in manuscript]
       </pre>
       <div class="inline-cta" style="margin-top:12px">
         <a class="btn" href="#contact">Request Full Book 2</a>
@@ -799,7 +640,7 @@ And the mist had begun to remember.
 
   <noscript><style>.yt{border:none}</style></noscript>
 
-  <!-- MUSIC logic: fades + trailer ducking + simple status -->
+  <!-- MUSIC logic -->
   <script>
   (function(){
     const audio = document.getElementById('bgm');
@@ -811,10 +652,8 @@ And the mist had begun to remember.
     const statusEl = document.getElementById('audioStatus');
     const say = (msg)=>{ if(statusEl) statusEl.textContent = msg; };
 
-    const params = new URLSearchParams(location.search);
-    if (params.get('music') === 'off' || !audio || !btn || !vol) return;
+    if (!audio || !btn || !vol) return;
 
-    // WebAudio
     let ctx, source, gain, ctxReady=false;
     function ensureCtx(){
       if (ctxReady) return;
@@ -832,7 +671,7 @@ And the mist had begun to remember.
     function applyVolume(v){
       const linear = Math.pow(Math.min(100, Math.max(0, v))/100, 1.5);
       if (gain) gain.gain.value = linear;
-      audio.volume = 1; // keep element at 1, control via gain node
+      audio.volume = 1;
     }
     function fadeTo(target, ms=300){
       if (!ctxReady) { audio.muted = (target === 0); return; }
@@ -866,7 +705,6 @@ And the mist had begun to remember.
       say('Theme paused');
     }
 
-    // Restore choices
     const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let wantPlay = localStorage.getItem('bgmEnabled') === 'true';
     vol.value = String(Math.min(100, Math.max(0, Number(localStorage.getItem('bgmVol') || '70'))));
@@ -879,17 +717,14 @@ And the mist had begun to remember.
       if (ctxReady) applyVolume(v);
     });
 
-    // First gesture can auto-start if previously enabled
     const firstGesture = () => { if (wantPlay && !prefersReduce) playAudio(); window.removeEventListener('pointerdown', firstGesture); };
     window.addEventListener('pointerdown', firstGesture, {once:true});
 
-    // Error messages for missing file / decode issues
     audio.addEventListener('error', ()=>{
       const src = audio.currentSrc || audio.src || 'audio file';
       say('Audio error: check path/format → ' + src);
     });
 
-    // Trailer ducking
     let wasPlayingBeforeTrailer = false;
     function maybePauseForTrailer(){
       if (!trailerSection) return;
@@ -909,84 +744,65 @@ And the mist had begun to remember.
   })();
   </script>
 
-  <!-- Chat demo logic (localStorage) -->
-  <script>
-    (function(){
-      const logEl = document.getElementById('chatLog');
-      const nameEl = document.getElementById('chatName');
-      const inputEl = document.getElementById('chatInput');
-      const sendBtn = document.getElementById('chatSend');
-      const clearBtn = document.getElementById('chatClear');
-
-      const KEY='forged-chat';
-      const now = ()=> new Date();
-
-      function render(){
-        logEl.innerHTML='';
-        const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
-        for (const m of messages){
-          const b = document.createElement('div');
-          b.className='bubble'+(m.me?' me':'');
-          b.innerHTML = `<div style="color:#9aa">${m.from} • ${m.time}</div><div>${m.text}</div>`;
-          logEl.appendChild(b);
-        }
-        logEl.scrollTop = logEl.scrollHeight;
-      }
-      function add(from, text, me=false){
-        const t = now();
-        const time = t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-        const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
-        messages.push({from, text, me, time});
-        localStorage.setItem(KEY, JSON.stringify(messages.slice(-200)));
-        render();
-      }
-
-      // Seed welcome messages once
-      if (!localStorage.getItem(KEY)){
-        add('Forged Support','Welcome to GE & LE Studios! Ask about the books, rights, trailers, or production. 🔥');
-        add('Forged Support','Tip: Share your email in the Contact section if you need a formal response.');
-        add('Forged Support','Hello! How can we help? 🔥');
-      }
-
-      function send(){
-        const name = (nameEl.value||'You').trim();
-        const text = (inputEl.value||'').trim();
-        if (!text) return;
-        add(name, text, true);
-        inputEl.value='';
-      }
-
-      sendBtn.addEventListener('click', send);
-      inputEl.addEventListener('keydown', e=>{ if (e.key==='Enter'){ e.preventDefault(); send(); }});
-      clearBtn.addEventListener('click', ()=>{ localStorage.removeItem(KEY); render(); });
-
-      render();
-    })();
-  </script>
-
-  <!-- Praise carousel JS -->
+  <!-- Chat demo + Praise carousel + Modals -->
   <script>
   (function(){
-    const track = document.getElementById('praiseTrack');
-    if(!track) return;
-    const prev = track.parentElement.querySelector('.prev');
-    const next = track.parentElement.querySelector('.next');
+    const logEl = document.getElementById('chatLog');
+    const nameEl = document.getElementById('chatName');
+    const inputEl = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('chatSend');
+    const clearBtn = document.getElementById('chatClear');
+    const KEY='forged-chat';
 
-    function snap(dir){
-      const w = track.getBoundingClientRect().width;
-      track.scrollBy({left: dir * (w * 0.8), behavior:'smooth'});
+    function render(){
+      logEl.innerHTML='';
+      const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
+      for (const m of messages){
+        const b = document.createElement('div');
+        b.className='bubble'+(m.me?' me':'');
+        b.innerHTML = `<div style="color:#9aa">${m.from} • ${m.time}</div><div>${m.text}</div>`;
+        logEl.appendChild(b);
+      }
+      logEl.scrollTop = logEl.scrollHeight;
     }
-    prev.addEventListener('click', ()=>snap(-1));
-    next.addEventListener('click', ()=>snap(1));
+    function add(from, text, me=false){
+      const t = new Date();
+      const time = t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
+      messages.push({from, text, me, time});
+      localStorage.setItem(KEY, JSON.stringify(messages.slice(-200)));
+      render();
+    }
+    if (!localStorage.getItem(KEY)){
+      add('Forged Support','Welcome to GE & LE Studios! Ask about the books, rights, trailers, or production. 🔥');
+      add('Forged Support','Tip: Share your email in the Contact section if you need a formal response.');
+      add('Forged Support','Hello! How can we help? 🔥');
+    }
+    function send(){
+      const name = (nameEl.value||'You').trim();
+      const text = (inputEl.value||'').trim();
+      if (!text) return;
+      add(name, text, true);
+      inputEl.value='';
+    }
+    sendBtn.addEventListener('click', send);
+    inputEl.addEventListener('keydown', e=>{ if (e.key==='Enter'){ e.preventDefault(); send(); }});
+    clearBtn.addEventListener('click', ()=>{ localStorage.removeItem(KEY); render(); });
+    render();
 
-    // Keyboard access
-    track.setAttribute('tabindex','0');
-    track.addEventListener('keydown', (e)=>{
-      if(e.key==='ArrowRight') snap(1);
-      if(e.key==='ArrowLeft')  snap(-1);
-    });
+    // Praise carousel nav (keyboard + buttons)
+    const track = document.getElementById('praiseTrack');
+    if(track){
+      const prev = track.parentElement.querySelector('.prev');
+      const next = track.parentElement.querySelector('.next');
+      function snap(dir){ track.scrollBy({left: dir * (track.getBoundingClientRect().width * 0.8), behavior:'smooth'}); }
+      prev.addEventListener('click', ()=>snap(-1));
+      next.addEventListener('click', ()=>snap(1));
+      track.setAttribute('tabindex','0');
+      track.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight') snap(1); if(e.key==='ArrowLeft') snap(-1); });
+    }
 
-    // Modal open/close
+    // Reader modals
     function openOverlay(id){
       const el = document.getElementById(id);
       if(!el) return;
@@ -1018,7 +834,7 @@ And the mist had begun to remember.
   })();
   </script>
 
-  <!-- PWA: register service worker (simple, safe) -->
+  <!-- PWA: service worker (optional) -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -1027,4 +843,4 @@ And the mist had begun to remember.
     }
   </script>
 </body>
-  </html>
+            </html>
