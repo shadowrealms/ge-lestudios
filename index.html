@@ -1,45 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Essentials -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GE & LE Studios — The Forged Saga</title>
   <meta name="description" content="The Forged Saga by GE & LE Studios — Book 1: Book of the Forged. Book 2: Dragon of the Forged. Cinematic fantasy forged in faith and dragonfire." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta name="theme-color" content="#0a0a0b" />
-
-  <!-- Canonical / Sitemap -->
   <link rel="canonical" href="https://shadowrealms.github.io/" />
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-
-  <!-- Icons / PWA -->
   <link rel="icon" type="image/jpeg" href="gl-logo.jpg" />
   <link rel="apple-touch-icon" href="gl-logo.jpg" />
   <link rel="manifest" href="/manifest.webmanifest" />
-
-  <!-- Social cards -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="GE & LE Studios" />
   <meta property="og:title" content="The Forged Saga — GE & LE Studios" />
   <meta property="og:description" content="A mythic, cinematic fantasy where dragons rise, vows outlast death, and love becomes a weapon against the dark." />
   <meta property="og:image" content="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Performance hints -->
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://i.ytimg.com">
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg">
   <link rel="preload" as="audio" href="forged-theme.mp3">
-
   <style>
     :root{
       --bg:#0a0a0b; --panel:#121214; --text:#f3f3f3; --muted:#b7b7b7; --ring:#2a2a2f;
       --gold:#caa35a; --gold-2:#e6c27a; --accent:#d39b42;
-      --banner:#15120d; --banner-border:#46361b;
-      --bubble:#101012; --bubble-border:#2a2a2f;
-      --overlay:rgba(0,0,0,.7);
-      --glow: rgba(226,199,120,.55);
+      --banner:#15120d; --banner-border:#46361b; --overlay:rgba(0,0,0,.75);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -52,7 +38,7 @@
         radial-gradient(1000px 500px at 110% -20%, rgba(202,163,90,.06), transparent 60%),
         var(--bg);
       line-height:1.65;
-      overflow-x:hidden; /* stop sideways scrolling */
+      overflow-x:hidden; /* stop sideways move */
     }
     img{max-width:100%; display:block}
     a{color:var(--gold-2); text-decoration:none}
@@ -65,20 +51,13 @@
 
     .banner{
       position:sticky; top:0; z-index:50;
-      background:
-        radial-gradient(800px 180px at 10% 0, rgba(226,199,120,.18), transparent 60%),
-        var(--banner);
-      border-bottom:1px solid var(--banner-border);
-      color:#f7e7b0;
+      background: radial-gradient(800px 180px at 10% 0, rgba(226,199,120,.18), transparent 60%), var(--banner);
+      border-bottom:1px solid var(--banner-border); color:#f7e7b0;
     }
     .banner-inner{width:min(1100px,92vw); margin:0 auto; padding:10px 0; display:flex; align-items:center; gap:12px}
     .pill{display:inline-block; font-size:.78rem; padding:4px 10px; border:1px solid var(--gold); border-radius:999px; color:var(--gold)}
-    .banner strong{letter-spacing:.06em}
     .banner .spacer{flex:1}
-    .banner button{
-      background:transparent; color:#f7e7b0; border:1px solid var(--banner-border);
-      border-radius:10px; padding:6px 10px; cursor:pointer
-    }
+    .banner button{background:transparent; color:#f7e7b0; border:1px solid var(--banner-border); border-radius:10px; padding:6px 10px; cursor:pointer}
     .banner button:hover{border-color:var(--gold-2); color:var(--gold-2)}
 
     header{
@@ -89,36 +68,20 @@
     }
     nav{display:flex; align-items:center; gap:14px; padding:10px 0}
     .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.06em}
-    .brand img{
-      width:40px; height:40px; border-radius:50%;
-      box-shadow:0 0 14px rgba(202,163,90,.35), inset 0 0 0 1px rgba(202,163,90,.25);
-      transition:transform .25s ease, box-shadow .35s ease;
-    }
-    .brand:hover img{
-      transform:translateY(-1px) scale(1.05);
-      box-shadow:
-        0 0 16px var(--glow),
-        0 0 34px rgba(202,163,90,.35),
-        inset 0 0 0 1px rgba(202,163,90,.45);
-      animation:pulseGlow 1600ms ease-in-out infinite;
-    }
-    @keyframes pulseGlow{
-      0%,100%{filter:drop-shadow(0 0 0 var(--glow))}
-      50%{filter:drop-shadow(0 0 12px var(--glow))}
-    }
+    .brand img{width:40px; height:40px; border-radius:50%; box-shadow:0 0 14px rgba(202,163,90,.35)}
     .links{margin-left:auto; display:flex; gap:18px; flex-wrap:wrap}
     .links a{padding:8px 10px; opacity:.85}
     .links a:hover{color:var(--gold-2); opacity:1}
 
+    /* music */
     .audio-controls{display:flex; align-items:center; gap:12px; margin-left:16px}
     .mute-btn{
       display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:10px;
-      border:1px solid var(--ring); background:#1a1a1e; color:var(--text); font-weight:700;
-      cursor:pointer;
+      border:1px solid var(--ring); background:#1a1a1e; color:var(--text); font-weight:700; cursor:pointer;
     }
     .eq{display:inline-grid; grid-template-columns:repeat(4,3px); gap:3px; height:14px}
     .eq span{width:3px; height:100%; background:linear-gradient(#e6c27a,#caa35a); opacity:.85; transform-origin:bottom}
-    [aria-pressed="false"] .eq span{animation:none; opacity:.4}
+    [aria-pressed="false"] .eq span{animation:none; opacity:.35}
     [aria-pressed="true"] .eq span:nth-child(1){animation:bar 600ms ease-in-out infinite}
     [aria-pressed="true"] .eq span:nth-child(2){animation:bar 540ms ease-in-out infinite}
     [aria-pressed="true"] .eq span:nth-child(3){animation:bar 720ms ease-in-out infinite}
@@ -126,36 +89,21 @@
     @keyframes bar{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
 
     .hero{padding:80px 0 56px; text-align:center}
-    .hero-logo{width:min(820px,95vw); aspect-ratio:16/9; object-fit:cover;
-      border-radius:16px; display:block; margin:0 auto 18px;
-      box-shadow:0 12px 40px rgba(0,0,0,.55), 0 0 28px rgba(202,163,90,.18)}
+    .hero-logo{width:min(820px,95vw); aspect-ratio:16/9; object-fit:cover; border-radius:16px; display:block; margin:0 auto 18px; box-shadow:0 12px 40px rgba(0,0,0,.55), 0 0 28px rgba(202,163,90,.18)}
     .tag{color:var(--gold-2); font-weight:800; letter-spacing:.18em; text-transform:uppercase}
     h1{font-size:clamp(2.1rem,5vw,3.6rem); margin:.35em 0 .1em}
     .subtitle{color:var(--muted); max-width:820px; margin:0 auto}
 
     section{padding:60px 0}
     h2{font-size:clamp(1.6rem,3.3vw,2.2rem); margin:0 0 8px}
-    .grid{
-      display:grid; gap:22px;
-      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-      margin-top:12px;
-    }
-    .card{
-      background:var(--panel); border:1px solid rgba(226,199,120,.08);
-      border-radius:16px; overflow:hidden;
-      box-shadow:0 8px 28px rgba(0,0,0,.35);
-    }
+    .grid{display:grid; gap:22px; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); margin-top:12px}
+    .card{background:var(--panel); border:1px solid rgba(226,199,120,.08); border-radius:16px; overflow:hidden; box-shadow:0 8px 28px rgba(0,0,0,.35)}
     .cover{aspect-ratio:3/4; background:#0f0f12; border-bottom:1px solid rgba(226,199,120,.08)}
     .cover img{width:100%; height:100%; object-fit:cover}
     .body{padding:18px; display:grid; gap:10px}
     .badge{font-size:.74rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-2)}
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:4px}
-    .btn{
-      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px;
-      border:1px solid var(--ring); background:#1a1a1e; color:var(--text); font-weight:700;
-      box-shadow:0 6px 20px rgba(0,0,0,.25);
-      cursor:pointer;
-    }
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px; border:1px solid var(--ring); background:#1a1a1e; color:var(--text); font-weight:700; box-shadow:0 6px 20px rgba(0,0,0,.25); cursor:pointer}
     .btn.secondary{background:transparent}
     .band{margin-top:22px; padding:22px; border-radius:14px; background:rgba(255,255,255,.02); border:1px solid rgba(226,199,120,.08)}
     blockquote{margin:0; color:#e6e6e6}
@@ -163,107 +111,39 @@
 
     #trailer{background:#000; box-shadow: inset 0 0 40px rgba(202,163,90,.22)}
     .trailers{display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-    .frame{
-      background:#080808; border:1px solid rgba(202,163,90,.35); border-radius:14px; padding:14px;
-      box-shadow:0 0 25px rgba(202,163,90,.18);
-    }
+    .frame{background:#080808; border:1px solid rgba(202,163,90,.35); border-radius:14px; padding:14px; box-shadow:0 0 25px rgba(202,163,90,.18)}
     .frame h3{margin:4px 0 12px; color:var(--gold)}
-    .yt{
-      position:relative; width:100%; padding-top:56.25%; border-radius:10px; overflow:hidden;
-      border:4px solid var(--gold); box-shadow:0 0 22px rgba(202,163,90,.35);
-      background:#000;
-    }
+    .yt{position:relative; width:100%; padding-top:56.25%; border-radius:10px; overflow:hidden; border:4px solid var(--gold); box-shadow:0 0 22px rgba(202,163,90,.35); background:#000}
     .yt iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
 
-    .sound{display:grid; gap:16px; grid-template-columns:1fr; max-width:780px}
-    .sound .panel{background:#0f0f11; border:1px solid rgba(226,199,120,.1); border-radius:14px; padding:16px}
-
-    .chat{background:#0a0a0c; border:1px solid rgba(226,199,120,.1); border-radius:16px; padding:16px}
-    .chat .row{display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap}
-    .chat .switch{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background:#0f0f11; border:1px solid var(--ring)}
-    .chatlog{max-height:340px; overflow:auto; display:grid; gap:12px; margin:12px 0}
-    .bubble{background:var(--bubble); border:1px solid var(--bubble-border); border-radius:16px; padding:14px}
+    /* chat bubble (secretary) */
+    .sec-fab{
+      position:fixed; right:18px; bottom:18px; width:56px; height:56px; border-radius:50%;
+      background:#111; color:#fff; display:grid; place-items:center; border:1px solid rgba(226,199,120,.35);
+      box-shadow:0 8px 28px rgba(0,0,0,.5); cursor:pointer; z-index:1001;
+    }
+    .sec-panel{
+      position:fixed; right:18px; bottom:86px; width:min(360px, 92vw);
+      background:#0f0f11; border:1px solid rgba(226,199,120,.2); border-radius:16px; padding:14px;
+      box-shadow:0 30px 70px rgba(0,0,0,.6); display:none; z-index:1001;
+    }
+    .sec-panel.open{display:block}
+    .chatlog{max-height:240px; overflow:auto; display:grid; gap:10px; margin:10px 0}
+    .bubble{background:#101012; border:1px solid #2a2a2f; border-radius:14px; padding:10px}
     .bubble.me{margin-left:auto; background:#131318; border-color:#2f2f36}
-    .composer{display:flex; gap:10px}
-    .composer input{flex:1; min-width:0; padding:12px 14px; border-radius:12px; border:1px solid var(--ring); background:#121216; color:var(--text)}
-    .composer button{padding:12px 16px; border-radius:12px; border:1px solid var(--ring); background:#1a1a1e; color:var(--text); font-weight:700}
+    .composer{display:flex; gap:8px}
+    .composer input{flex:1; min-width:0; padding:10px 12px; border-radius:12px; border:1px solid #2a2a2f; background:#121216; color:var(--text)}
+    .composer button{padding:10px 12px; border-radius:12px; border:1px solid #2a2a2f; background:#1a1a1e; color:var(--text); font-weight:700}
 
-    footer{border-top:1px solid rgba(226,199,120,.12); padding-bottom:40px}
-    small{color:var(--muted)}
-
-    .praise-carousel{position:relative; margin-top:14px}
-    .praise-track{
-      display:grid; grid-auto-flow:column; grid-auto-columns:min(520px, 92vw);
-      gap:18px; overflow:auto; scroll-snap-type:x mandatory; padding:6px 8px;
-    }
-    .praise-card{
-      scroll-snap-align:center; background:var(--panel); border:1px solid rgba(226,199,120,.1);
-      border-radius:16px; padding:18px; box-shadow:0 8px 24px rgba(0,0,0,.35);
-      display:grid; gap:10px; min-height:240px;
-    }
-    .praise-head{display:flex; flex-direction:column}
-    .praise-head .role{color:var(--muted); font-size:.9rem}
-    .praise-tag{font-size:.85rem; color:var(--gold-2); letter-spacing:.06em; text-transform:uppercase}
-    .praise-card blockquote{font-size:1.02rem; line-height:1.6; margin:0}
-    .praise-card details{margin-top:6px}
-    .praise-nav{
-      position:absolute; top:50%; transform:translateY(-50%);
-      background:#0f0f11; color:var(--gold-2); border:1px solid var(--ring);
-      width:40px; height:40px; border-radius:999px; cursor:pointer;
-      display:grid; place-items:center; box-shadow:0 6px 18px rgba(0,0,0,.3)
-    }
-    .praise-nav:hover{border-color:var(--gold)}
-    .praise-nav.prev{left:-6px}
-    .praise-nav.next{right:-6px}
-
+    /* reader modal */
     .overlay{position:fixed; inset:0; background:var(--overlay); display:none; z-index:1000; padding:20px}
     .overlay.open{display:block}
-    .reader{
-      width:min(920px, 96vw); max-height:88vh; margin:40px auto;
-      background:#0f0f11; border:1px solid rgba(226,199,120,.2); border-radius:16px;
-      box-shadow:0 30px 80px rgba(0,0,0,.6); overflow:auto; padding:22px;
-    }
+    .reader{width:min(920px, 96vw); max-height:88vh; margin:40px auto; background:#0f0f11; border:1px solid rgba(226,199,120,.2); border-radius:16px; box-shadow:0 30px 80px rgba(0,0,0,.6); overflow:auto; padding:22px}
     .reader h3{margin:0 0 6px; color:var(--gold-2)}
     .reader .meta{color:var(--muted); margin-bottom:12px}
     .reader .controls{display:flex; gap:10px; margin-bottom:10px}
     .reader .controls .btn{padding:8px 12px}
-    .reader pre{
-      white-space:pre-wrap; word-wrap:break-word; margin:0;
-      font-family:ui-serif, Georgia, "Times New Roman", serif; line-height:1.75; font-size:1.02rem; color:#f0f0f0;
-    }
-    .inline-cta{display:flex; gap:10px; flex-wrap:wrap}
-
-    /* Floating AI Secretary (Lumin) */
-    .assistant-fab{
-      position:fixed; right:18px; bottom:18px; z-index:9999;
-      width:56px; height:56px; border-radius:999px; border:1px solid rgba(226,199,120,.25);
-      background:radial-gradient(180px 80px at 70% -40%, rgba(226,199,120,.25), transparent), #121214;
-      box-shadow:0 10px 28px rgba(0,0,0,.5), 0 0 18px rgba(202,163,90,.18);
-      display:grid; place-items:center; cursor:pointer;
-    }
-    .assistant-fab:hover{border-color:var(--gold-2)}
-    .assistant-fab svg{width:26px; height:26px; opacity:.9}
-
-    .assistant{
-      position:fixed; right:18px; bottom:86px; z-index:9999; width:min(380px, 92vw);
-      background:#0f0f11; border:1px solid rgba(226,199,120,.25); border-radius:14px;
-      box-shadow:0 22px 60px rgba(0,0,0,.7); display:none; overflow:hidden;
-    }
-    .assistant.open{display:grid; grid-template-rows:auto 1fr auto}
-    .assistant header{
-      padding:12px 14px; border-bottom:1px solid rgba(226,199,120,.12);
-      display:flex; align-items:center; gap:10px; background:linear-gradient(180deg,#121214,#0f0f11);
-    }
-    .assistant header strong{letter-spacing:.06em}
-    .assistant .log{max-height:300px; overflow:auto; display:grid; gap:8px; padding:12px}
-    .assistant .msg{background:#101012; border:1px solid var(--bubble-border); border-radius:12px; padding:10px}
-    .assistant .msg.me{margin-left:auto; background:#131318; border-color:#2f2f36}
-    .assistant .composer{display:flex; gap:8px; padding:12px; border-top:1px solid rgba(226,199,120,.12)}
-    .assistant .composer input{flex:1; min-width:0; padding:10px 12px; border-radius:10px; border:1px solid var(--ring); background:#121216; color:var(--text)}
-    .assistant .composer button{padding:10px 12px; border-radius:10px; border:1px solid var(--ring); background:#1a1a1e; color:var(--text); font-weight:700}
-    .assistant .suggest{display:flex; gap:8px; flex-wrap:wrap; padding:10px 12px; border-top:1px solid rgba(226,199,120,.08)}
-    .assistant .suggest button{padding:6px 10px; border-radius:999px; border:1px solid var(--ring); background:#16161a; color:var(--text); cursor:pointer; font-size:.85rem}
-    .assistant .suggest button:hover{border-color:var(--gold-2); color:var(--gold-2)}
+    .reader article{white-space:pre-wrap; word-wrap:break-word; margin:0; font-family:ui-serif, Georgia, "Times New Roman", serif; line-height:1.75; font-size:1.02rem; color:#f0f0f0}
   </style>
 </head>
 <body>
@@ -272,7 +152,6 @@
   <div id="audioStatus" aria-live="polite" style="position:absolute;left:-9999px"></div>
   <audio id="bgm" src="forged-theme.mp3" preload="none" loop></audio>
 
-  <!-- COMING SOON BANNER -->
   <div class="banner" role="region" aria-label="Site status banner">
     <div class="banner-inner">
       <span class="pill">COMING&nbsp;SOON</span>
@@ -286,7 +165,7 @@
   <header>
     <div class="wrap">
       <nav aria-label="Primary">
-        <div class="brand" title="Forged in Faith">
+        <div class="brand">
           <img src="gl-logo.jpg" alt="GE & LE Studios logo" />
           <span>GE &amp; LE STUDIOS</span>
         </div>
@@ -310,7 +189,6 @@
           <a href="#praise">Praise</a>
           <a href="#verses">Verses</a>
           <a href="#press">Press Kit</a>
-          <a href="#chat">Chat</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
@@ -322,10 +200,7 @@
     <!-- HERO -->
     <section class="hero" id="home">
       <div class="wrap">
-        <img
-          class="hero-logo fade-in"
-          src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg"
-          alt="The Forged Saga — key art: silhouette before a towering dragon of flame" />
+        <img class="hero-logo fade-in" src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg" alt="The Forged Saga — key art: silhouette before a towering dragon of flame" />
         <div class="tag fade-in delay">FORGED IN FAITH • THE FORGED SAGA</div>
         <h1 class="fade-in delay">The Forged Saga</h1>
         <p class="subtitle fade-in delay">A mythic, cinematic fantasy where dragons rise, vows outlast death, and love becomes a weapon against the dark.</p>
@@ -342,9 +217,7 @@
           <!-- Book One -->
           <article class="card fade-in" aria-labelledby="b1-title">
             <div class="cover">
-              <img loading="lazy" decoding="async"
-                   src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg"
-                   alt="Key art — Book of the Forged" />
+              <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg" alt="Key art — Book of the Forged" />
             </div>
             <div class="body">
               <div class="badge">Book One</div>
@@ -352,7 +225,7 @@
               <p>Stephen steps beyond the veil where fate is carved in flame and shadow. Forged by trials of heart and soul, he must claim his place before darkness swallows the realms.</p>
               <div class="cta">
                 <a class="btn" href="#trailer">Watch Teaser</a>
-                <button class="btn secondary" data-open="sample-b1">Read Chapter 1</button>
+                <button class="btn secondary" data-read="book1.html" data-title="Book 1 — Book of the Forged" data-meta="Full Chapter (from book1.html)">Read Full Chapter</button>
               </div>
             </div>
           </article>
@@ -360,9 +233,7 @@
           <!-- Book Two -->
           <article class="card fade-in delay" aria-labelledby="b2-title">
             <div class="cover">
-              <img loading="lazy" decoding="async"
-                   src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250815-235522_Chrome.jpg"
-                   alt="Key art — Dragon of the Forged" />
+              <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250815-235522_Chrome.jpg" alt="Key art — Dragon of the Forged" />
             </div>
             <div class="body">
               <div class="badge">Book Two</div>
@@ -370,7 +241,7 @@
               <p>In the heart of battle, mortal and dragon souls unite. Prophecy burns like iron, memory bites like frost, and love learns to wield wings.</p>
               <div class="cta">
                 <a class="btn" href="#trailer">Watch Teaser</a>
-                <button class="btn secondary" data-open="sample-b2">Read Chapter 1</button>
+                <button class="btn secondary" data-read="book2.html" data-title="Book 2 — Dragon of the Forged" data-meta="Chapter 30 (loaded from book2.html)">Read Chapter 30</button>
               </div>
             </div>
           </article>
@@ -385,17 +256,13 @@
         <div class="grid">
           <article class="card fade-in">
             <div class="cover">
-              <img loading="lazy" decoding="async"
-                   src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg"
-                   alt="Poster — Book of the Forged" />
+              <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250816-031135_Gallery.jpg" alt="Poster — Book of the Forged" />
             </div>
             <div class="body"><div class="badge">Key Art</div><strong>Book of the Forged</strong></div>
           </article>
           <article class="card fade-in delay">
             <div class="cover">
-              <img loading="lazy" decoding="async"
-                   src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250815-235522_Chrome.jpg"
-                   alt="Poster — Dragon of the Forged" />
+              <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/shadowrealms/ge-lestudios/main/Screenshot_20250815-235522_Chrome.jpg" alt="Poster — Dragon of the Forged" />
             </div>
             <div class="body"><div class="badge">Key Art</div><strong>Dragon of the Forged</strong></div>
           </article>
@@ -408,46 +275,30 @@
       <div class="wrap">
         <h2 id="soundtrack-title">Soundtrack</h2>
         <p class="subtitle">Music by Darrin Williams. Full OST coming soon.</p>
-        <div class="sound">
-          <div class="panel">
-            <strong>Theme: The Forged Saga</strong>
-            <audio controls preload="none" style="width:100%" aria-label="Play The Forged Saga theme">
-              <source src="forged-theme.mp3" type="audio/mpeg" />
-            </audio>
-            <p style="margin:.6rem 0 0">
-              Or <a class="btn secondary" href="https://drive.google.com/file/d/19TJ91Yygzz9OELdvauS7PAfSv0xVmEfF/view" target="_blank" rel="noopener">listen on Google Drive</a>
-            </p>
-          </div>
+        <div class="band">
+          <strong>Theme: The Forged Saga</strong>
+          <audio controls preload="none" style="width:100%" aria-label="Play The Forged Saga theme">
+            <source src="forged-theme.mp3" type="audio/mpeg" />
+          </audio>
+          <p style="margin:.6rem 0 0">
+            Or <a class="btn secondary" href="forged-theme.mp3" download>download MP3</a>
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- TRAILER -->
+    <!-- TRAILERS -->
     <section id="trailer" aria-labelledby="trailer-title">
       <div class="wrap">
         <h2 id="trailer-title" style="color:var(--gold); text-shadow:0 0 10px rgba(202,163,90,.7)">Official Cinematic Trailers</h2>
         <div class="trailers">
           <div class="frame">
             <h3>Teaser A</h3>
-            <div class="yt">
-              <iframe
-                src="https://www.youtube.com/embed/a0Aun_uEmL0"
-                title="The Forged Saga — Teaser A"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-              </iframe>
-            </div>
+            <div class="yt"><iframe src="https://www.youtube.com/embed/a0Aun_uEmL0" title="The Forged Saga — Teaser A" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
           </div>
           <div class="frame">
             <h3><span class="badge" style="background:rgba(226,199,120,.12); padding:4px 8px; border-radius:8px; margin-right:8px">New</span>Teaser B</h3>
-            <div class="yt">
-              <iframe
-                src="https://www.youtube.com/embed/RMny5gzN4A4"
-                title="The Forged Saga — Teaser B (YouTube Short)"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-              </iframe>
-            </div>
+            <div class="yt"><iframe src="https://www.youtube.com/embed/RMny5gzN4A4" title="The Forged Saga — Teaser B (YouTube Short)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
           </div>
         </div>
       </div>
@@ -458,81 +309,9 @@
       <div class="wrap">
         <h2 id="praise-title">Critical Praise</h2>
         <p class="subtitle">Early coverage from festival directors, reviewers, producers, and editors.</p>
-
-        <div class="praise-carousel" role="region" aria-label="Critical praise carousel">
-          <button class="praise-nav prev" aria-label="Previous review" type="button">‹</button>
-          <div class="praise-track" id="praiseTrack">
-            <article class="praise-card">
-              <div class="praise-head">
-                <strong>Elena Marlowe</strong>
-                <span class="role">Director, Southern Cross Literary Festival</span>
-              </div>
-              <div class="praise-tag">Book 1 — Chapter 33: <em>The Calling of Zephyr’s Spirit</em></div>
-              <blockquote>“Scripture for the soul disguised as epic fantasy. The prayer, the merger of souls, the Sword of the Heavens—utterly transcendent.”</blockquote>
-              <details><summary>Read full note</summary><p>Flawless build from vulnerability to divine answer. Cinematic, quotable, and deeply moving. 10/10.</p></details>
-            </article>
-
-            <article class="praise-card">
-              <div class="praise-head">
-                <strong>Jonas Whitford</strong>
-                <span class="role">Senior Reviewer, <em>The Quill &amp; Sword</em></span>
-              </div>
-              <div class="praise-tag">Book 2 — Chapter 30: <em>The Monarchs of Memory</em></div>
-              <blockquote>“Trauma reforged into myth. The relic, the bowing monarchs, the close—‘The war had only just begun.’ Chills. 10/10.”</blockquote>
-              <details><summary>Read full note</summary><p>Majestic title, sacred structure, world-class symbolism. Award-caliber chapter.</p></details>
-            </article>
-
-            <article class="praise-card">
-              <div class="praise-head">
-                <strong>Marisa Voss</strong>
-                <span class="role">Executive Producer, Horizon Gate Studios</span>
-              </div>
-              <div class="praise-tag">Book 2 — Chapters 24–30 (Producer Coverage)</div>
-              <blockquote>“Darkly poetic to transcendent. ‘Pan’s Labyrinth’ meets prestige fantasy. I’d greenlight off this arc alone.”</blockquote>
-              <details><summary>Read full note</summary><p>Seven-chapter run flows like a second-act film: structured, symbolic, and screen-ready.</p></details>
-            </article>
-
-            <article class="praise-card">
-              <div class="praise-head">
-                <strong>Caleb Stroud</strong>
-                <span class="role">Lead Editor, Mythos &amp; Film Review</span>
-              </div>
-              <div class="praise-tag">Book 1 — Chapter 18: <em>The Thief of Night</em></div>
-              <blockquote>“Unholy, poetic, and terrifyingly beautiful. ‘Even if I have to walk through fire…’ is heroism reborn.”</blockquote>
-              <details><summary>Read full note</summary><p>Four pages of immaculate tension, biblical-scale damnation, and a chilling last line. 10/10.</p></details>
-            </article>
-
-            <article class="praise-card">
-              <div class="praise-head">
-                <strong>Rev. Anna K. Beaumont</strong>
-                <span class="role">Faith &amp; Arts Review</span>
-              </div>
-              <div class="praise-tag">Book 1 — Zephyr &amp; Stephen (Relationship Focus)</div>
-              <blockquote>“A love written in the Book of Life—tender, sacrificial, and holy. Faith woven through every breath.”</blockquote>
-              <details><summary>Read full note</summary><p>Not romance-as-trope, but covenant. The emotional core that lifts the saga beyond genre.</p></details>
-            </article>
-
-            <article class="praise-card">
-              <div class="praise-head">
-                <strong>Dr. Haruto Sato</strong>
-                <span class="role">Professor of Mythopoeia, University of Auckland</span>
-              </div>
-              <div class="praise-tag">Saga — Worldbuilding &amp; Lore</div>
-              <blockquote>“A coherent myth-architecture: dragon sigils, sacred verses, covenant blades. Feels excavated, not invented.”</blockquote>
-              <details><summary>Read full note</summary><p>The ‘Book of the Forged’ verses function as living scripture—rare, resonant design.</p></details>
-            </article>
-
-            <article class="praise-card">
-              <div class="praise-head">
-                <strong>Aurora Penn</strong>
-                <span class="role">Founder, Dragonfire Reads</span>
-              </div>
-              <div class="praise-tag">Book 2 — Chapters 40–41 (Grand Battle &amp; Aftermath)</div>
-              <blockquote>“Judgment written in lightning, then the gentleness of dawn. The pivot from war to promise is perfect.”</blockquote>
-              <details><summary>Read full note</summary><p>The divine sword entrance is pure cinema; the Promised Land aftermath lets the soul breathe.</p></details>
-            </article>
-          </div>
-          <button class="praise-nav next" aria-label="Next review" type="button">›</button>
+        <div class="band">
+          <blockquote>“Trauma reforged into myth. The relic, the bowing monarchs, the close—‘The war had only just begun.’ Chills. 10/10.” — <em>The Quill & Sword</em> on Book 2, Ch. 30</blockquote>
+          <blockquote>“A coherent myth-architecture: dragon sigils, sacred verses, covenant blades.” — Dr. Haruto Sato</blockquote>
         </div>
       </div>
     </section>
@@ -545,63 +324,6 @@
           <blockquote>“The mountain did not split because of time or storm — it split because war demanded to be born.”</blockquote>
           <blockquote>“Beneath the weight of shadow, the Forged do not bow — they burn.”</blockquote>
           <blockquote>“God’s flame does not flicker in the wind; it roars against the darkness.”</blockquote>
-          <blockquote>“Love is patient. Love endures flame and storm. Love outlives death.” — Book of the Forged, Verse 21</blockquote>
-          <blockquote>“What the fire claims and the will accepts shall rise remade—either truer than before, or not at all.” — Book of the Forged 2:6</blockquote>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRESS KIT -->
-    <section id="press" aria-labelledby="press-title">
-      <div class="wrap">
-        <div class="band fade-in">
-          <h2 id="press-title" style="margin:0 0 6px;">Press Kit & Materials</h2>
-          <p>One-page overview, author bios, artwork, logo pack, trailer thumbnails, and sample chapters.</p>
-          <div class="cta">
-            <a class="btn" href="/press/GE-LE_Studios_The-Forged-Saga_PressKit.zip" download>Download ZIP</a>
-            <a class="btn secondary" href="https://drive.google.com/drive/folders/XXXXXXXXX" target="_blank" rel="noopener">View on Google Drive</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHAT DEMO -->
-    <section id="chat" aria-labelledby="chat-title">
-      <div class="wrap">
-        <div class="band chat">
-          <h2 id="chat-title" style="margin:0 0 12px;">Chat with GE & LE Studios</h2>
-          <div class="row">
-            <div class="switch"><span style="width:10px;height:10px;border-radius:50%;background:#4ade80;display:inline-block"></span> Forged Support</div>
-            <div style="margin-left:auto; color:var(--muted)">Tip: Press <strong>Enter</strong> to send</div>
-          </div>
-
-          <div class="row">
-            <label style="flex:1">Your name:<br/>
-              <input id="chatName" placeholder="e.g., Stephen" />
-            </label>
-            <button id="chatClear" class="btn secondary" type="button">Clear</button>
-          </div>
-
-          <div id="chatLog" class="chatlog" aria-live="polite"></div>
-
-          <div class="composer">
-            <input id="chatInput" placeholder="Type your message..." />
-            <button id="chatSend" class="btn" type="button">Send</button>
-          </div>
-
-          <p class="subtitle" style="margin-top:12px">Note: This is a front-end demo chat (no server). For live inbox routing, wire a form or connect a provider later.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" aria-labelledby="about-title">
-      <div class="wrap">
-        <div class="band fade-in">
-          <h2 id="about-title" style="margin:0 0 6px;">About the Forged Saga</h2>
-          <p><em>The Forged Saga</em> is an epic fantasy journey spanning realms of fire, shadow, and light. Across
-             <em>Book of the Forged</em> and <em>Dragon of the Forged</em>, Stephen’s destiny unfolds—bound to dragons, haunted by prophecy, and driven by a love powerful enough to defy death itself.</p>
-          <p style="margin:0; font-style:italic; color:var(--muted)">“Two souls. One flame. Forged to change the fate of worlds.”</p>
         </div>
       </div>
     </section>
@@ -612,23 +334,20 @@
         <div class="band fade-in">
           <h2 id="contact-title" style="margin-top:0;">Contact & Requests</h2>
           <p>For rights inquiries, interviews, or materials, send us a note. We’ll get back swiftly.</p>
-
-          <!-- Formspree: replace YOUR_ID with your form ID -->
           <form action="https://formspree.io/f/YOUR_ID" method="POST">
-            <div class="row">
-              <p><label> Name<br><input type="text" name="name" required></label></p>
-              <p><label> Email<br><input type="email" name="email" required></label></p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap">
+              <p style="flex:1"><label> Name<br><input type="text" name="name" required></label></p>
+              <p style="flex:1"><label> Email<br><input type="email" name="email" required></label></p>
             </div>
             <p><label> Organization (optional)<br><input type="text" name="org"></label></p>
             <p><label> Message<br><textarea name="message" required></textarea></label></p>
             <p class="cta">
               <button class="btn" type="submit">Send Message</button>
-              <span class="subtitle" style="align-self:center">Or email: <a href="mailto:hello@ge-lestudios.com">hello@ge-lestudios.com</a></span>
+              <span class="subtitle" style="align-self:center">Or email: <a href="mailto:gumworld1976@yahoo.com.au">gumworld1976@yahoo.com.au</a></span>
             </p>
             <input type="hidden" name="_subject" value="Forged Saga — Inquiry" />
             <input type="hidden" name="_captcha" value="false" />
           </form>
-          <p class="subtitle" style="margin:.6rem 0 0">Direct: <a href="mailto:gumworld1976@yahoo.com.au">gumworld1976@yahoo.com.au</a></p>
         </div>
       </div>
     </section>
@@ -637,63 +356,46 @@
   <footer>
     <div class="wrap" style="text-align:center; padding-top:22px">
       <img src="gl-logo.jpg" alt="GE & LE Studios" style="width:68px; height:68px; border-radius:50%; box-shadow:0 0 18px rgba(202,163,90,.3)" loading="lazy" decoding="async" />
-      <p style="margin:10px 0 6px;">© 2025 GE &amp; LE Studios • Equal Ownership — GE &amp; LE</p>
+      <p style="margin:10px 0 6px;">© 2025 GE &amp; LE Studios</p>
       <small>Forged in Faith • The Forged Saga</small>
     </div>
   </footer>
 
-  <!-- SAMPLE READERS (MODALS) -->
-  <div id="sample-b1" class="overlay" role="dialog" aria-modal="true" aria-labelledby="b1-label">
+  <!-- READER MODAL (loads full files) -->
+  <div id="reader" class="overlay" role="dialog" aria-modal="true" aria-labelledby="reader-title">
     <div class="reader">
       <div class="controls">
         <button class="btn" data-close>Close</button>
         <a class="btn secondary" href="#contact">Request Full Manuscript</a>
       </div>
-      <h3 id="b1-label">Book 1 — <em>Book of the Forged</em></h3>
-      <div class="meta">Prologue: <strong>The Bridge</strong></div>
-      <pre>
-"Some wounds never fade — they wait in the dark,
-echoing through the years until the day they are called to the light."
-
-Rain swallowed the night, drumming against the hood of the car in a relentless rhythm that
-drowned out almost everything — except the sound of his mother’s breathing...
-[Excerpt continues in manuscript]
-      </pre>
-      <div class="inline-cta" style="margin-top:12px">
-        <a class="btn" href="#contact">Request Full Book 1</a>
+      <h3 id="reader-title"></h3>
+      <div class="meta" id="reader-meta"></div>
+      <article id="reader-body">Loading…</article>
+      <div class="controls" style="margin-top:12px">
+        <a class="btn" href="#contact">Request Rights/Press</a>
         <button class="btn secondary" data-close>Close</button>
       </div>
     </div>
   </div>
 
-  <div id="sample-b2" class="overlay" role="dialog" aria-modal="true" aria-labelledby="b2-label">
-    <div class="reader">
-      <div class="controls">
-        <button class="btn" data-close>Close</button>
-        <a class="btn secondary" href="#contact">Request Full Manuscript</a>
-      </div>
-      <h3 id="b2-label">Book 2 — <em>Dragon of the Forged</em></h3>
-      <div class="meta">Chapter One: <strong>The Hidden Mirror</strong></div>
-      <pre>
-“Even the shattered blade may drink of the Flame again;
-for the Hand that forged it does not forget its name.”
-
-The air did not move... Lyssa was not gone.
-And the mist had begun to remember.
-[Full chapter in manuscript]
-      </pre>
-      <div class="inline-cta" style="margin-top:12px">
-        <a class="btn" href="#contact">Request Full Book 2</a>
-        <button class="btn secondary" data-close>Close</button>
-      </div>
+  <!-- Secretary Chat (no game) -->
+  <button class="sec-fab" id="secFab" aria-label="Open Forged Support">💬</button>
+  <div class="sec-panel" id="secPanel" role="dialog" aria-label="Forged Support Chat">
+    <strong>Forged Support</strong>
+    <div id="chatLog" class="chatlog" aria-live="polite"></div>
+    <div class="composer">
+      <input id="chatInput" placeholder="Type your message..." />
+      <button id="chatSend" class="btn" type="button">Send</button>
     </div>
+    <p class="subtitle" style="margin-top:8px">This is a demo inbox. For direct replies, email <a href="mailto:gumworld1976@yahoo.com.au">gumworld1976@yahoo.com.au</a>.</p>
   </div>
 
   <noscript><style>.yt{border:none}</style></noscript>
 
-  <!-- MUSIC logic -->
+  <!-- MUSIC + READER + SECRETARY LOGIC -->
   <script>
   (function(){
+    /* ===== MUSIC ===== */
     const audio = document.getElementById('bgm');
     const btn   = document.getElementById('muteBtn');
     const label = document.getElementById('muteLabel');
@@ -702,291 +404,127 @@ And the mist had begun to remember.
     const trailerSection = document.getElementById('trailer');
     const statusEl = document.getElementById('audioStatus');
     const say = (msg)=>{ if(statusEl) statusEl.textContent = msg; };
-
-    if (!audio || !btn || !vol) return;
-
-    let ctx, source, gain, ctxReady=false;
-    function ensureCtx(){
-      if (ctxReady) return;
-      ctx = new (window.AudioContext || window.webkitAudioContext)();
-      source = ctx.createMediaElementSource(audio);
-      gain = ctx.createGain();
-      source.connect(gain).connect(ctx.destination);
-      ctxReady = true;
-    }
-    function setUI(playing){
-      btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
-      label.textContent = playing ? 'Mute Theme' : 'Play Theme';
-      nowPlaying.textContent = playing ? 'Now playing: The Forged Saga — Theme' : '';
-    }
-    function applyVolume(v){
-      const linear = Math.pow(Math.min(100, Math.max(0, v))/100, 1.5);
-      if (gain) gain.gain.value = linear;
-      audio.volume = 1;
-    }
-    function fadeTo(target, ms=300){
-      if (!ctxReady) { audio.muted = (target === 0); return; }
-      const now = ctx.currentTime;
-      const g = gain.gain;
-      try{
-        g.setValueAtTime(g.value ?? g.defaultValue ?? 0, now);
-        g.linearRampToValueAtTime(target, now + ms/1000);
-      }catch{}
-    }
-    async function playAudio(){
-      try{
-        ensureCtx();
-        if (ctx.state === 'suspended') await ctx.resume();
-        applyVolume(Number(vol.value));
-        if (audio.paused) await audio.play();
-        localStorage.setItem('bgmEnabled','true');
-        setUI(true);
-        fadeTo(Math.pow((Number(vol.value)||70)/100, 1.5), 300);
-        say('Theme playing');
-      }catch(e){
-        setUI(false);
-        say('Audio blocked until a click. Tap Play Theme to start.');
+    if (audio && btn && vol){
+      let ctx, source, gain, ctxReady=false;
+      function ensureCtx(){
+        if (ctxReady) return;
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+        source = ctx.createMediaElementSource(audio);
+        gain = ctx.createGain();
+        source.connect(gain).connect(ctx.destination);
+        ctxReady = true;
       }
-    }
-    function pauseAudio(){
-      if (ctxReady) fadeTo(0, 200);
-      audio.pause();
-      localStorage.setItem('bgmEnabled','false');
+      function setUI(p){ btn.setAttribute('aria-pressed', p ? 'true' : 'false'); label.textContent = p ? 'Mute Theme' : 'Play Theme'; nowPlaying.textContent = p ? 'Now playing: The Forged Saga — Theme' : ''; }
+      function applyVolume(v){ const linear = Math.pow(Math.min(100, Math.max(0, v))/100, 1.5); if (gain) gain.gain.value = linear; audio.volume = 1; }
+      function fadeTo(target, ms=300){
+        if (!ctxReady) { audio.muted = (target === 0); return; }
+        const now = ctx.currentTime; const g = gain.gain;
+        try{ g.setValueAtTime(g.value ?? g.defaultValue ?? 0, now); g.linearRampToValueAtTime(target, now + ms/1000); }catch{}
+      }
+      async function playAudio(){
+        try{
+          ensureCtx();
+          if (ctx.state === 'suspended') await ctx.resume();
+          applyVolume(Number(vol.value));
+          if (audio.paused) await audio.play();
+          localStorage.setItem('bgmEnabled','true'); setUI(true);
+          fadeTo(Math.pow((Number(vol.value)||70)/100, 1.5), 300);
+          say('Theme playing');
+        }catch{ setUI(false); say('Tap Play Theme to start.'); }
+      }
+      function pauseAudio(){ if (ctxReady) fadeTo(0, 200); audio.pause(); localStorage.setItem('bgmEnabled','false'); setUI(false); say('Theme paused'); }
+      let wantPlay = localStorage.getItem('bgmEnabled') === 'true';
+      vol.value = String(Math.min(100, Math.max(0, Number(localStorage.getItem('bgmVol') || '70'))));
+      btn.addEventListener('click', ()=> audio.paused ? playAudio() : pauseAudio());
+      window.addEventListener('keydown', (e)=>{ if (e.key.toLowerCase() === 'm') btn.click(); });
+      vol.addEventListener('input', ()=>{ const v = Number(vol.value); localStorage.setItem('bgmVol', String(v)); if (ctxReady) applyVolume(v); });
+      const firstGesture = () => { if (wantPlay) playAudio(); window.removeEventListener('pointerdown', firstGesture); };
+      window.addEventListener('pointerdown', firstGesture, {once:true});
+      let wasPlayingBeforeTrailer = false;
+      function maybePauseForTrailer(){ if (audio && !audio.paused) { wasPlayingBeforeTrailer = true; pauseAudio(); } }
+      function maybeResumeAfterTrailer(){ if (wasPlayingBeforeTrailer) { wasPlayingBeforeTrailer = false; if (localStorage.getItem('bgmEnabled')==='true') playAudio(); } }
+      if (trailerSection){
+        trailerSection.addEventListener('pointerdown', maybePauseForTrailer);
+        trailerSection.addEventListener('focusin',   maybePauseForTrailer);
+        document.addEventListener('pointerdown', (e)=>{ if (!trailerSection.contains(e.target)) maybeResumeAfterTrailer(); });
+      }
       setUI(false);
-      say('Theme paused');
     }
 
-    const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let wantPlay = localStorage.getItem('bgmEnabled') === 'true';
-    vol.value = String(Math.min(100, Math.max(0, Number(localStorage.getItem('bgmVol') || '70'))));
+    /* ===== READER: LOAD FULL FILES ===== */
+    const reader = document.getElementById('reader');
+    const rTitle = document.getElementById('reader-title');
+    const rMeta  = document.getElementById('reader-meta');
+    const rBody  = document.getElementById('reader-body');
+    function openReader(title, meta){ reader.classList.add('open'); document.body.style.overflow='hidden'; rTitle.textContent=title; rMeta.textContent=meta; rBody.textContent='Loading…'; }
+    function closeReader(){ reader.classList.remove('open'); document.body.style.overflow=''; }
+    document.querySelectorAll('[data-close]').forEach(b=> b.addEventListener('click', closeReader));
+    reader.addEventListener('click', (e)=>{ if (e.target === reader) closeReader(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeReader(); });
 
-    btn.addEventListener('click', ()=> audio.paused ? playAudio() : pauseAudio());
-    window.addEventListener('keydown', (e)=>{ if (e.key.toLowerCase() === 'm') btn.click(); });
-    vol.addEventListener('input', ()=>{
-      const v = Number(vol.value);
-      localStorage.setItem('bgmVol', String(v));
-      if (ctxReady) applyVolume(v);
-    });
-
-    const firstGesture = () => { if (wantPlay && !prefersReduce) playAudio(); window.removeEventListener('pointerdown', firstGesture); };
-    window.addEventListener('pointerdown', firstGesture, {once:true});
-
-    audio.addEventListener('error', ()=>{
-      const src = audio.currentSrc || audio.src || 'audio file';
-      say('Audio error: check path/format → ' + src);
-    });
-
-    let wasPlayingBeforeTrailer = false;
-    function maybePauseForTrailer(){
-      if (!trailerSection) return;
-      if (audio && !audio.paused) { wasPlayingBeforeTrailer = true; pauseAudio(); }
-    }
-    function maybeResumeAfterTrailer(){
-      if (wasPlayingBeforeTrailer) { wasPlayingBeforeTrailer = false; if (localStorage.getItem('bgmEnabled')==='true') playAudio(); }
-    }
-    if (trailerSection){
-      trailerSection.addEventListener('pointerdown', maybePauseForTrailer);
-      trailerSection.addEventListener('focusin',   maybePauseForTrailer);
-      document.addEventListener('pointerdown', (e)=>{
-        if (!trailerSection.contains(e.target)) maybeResumeAfterTrailer();
+    // Buttons that fetch chapter files
+    document.querySelectorAll('[data-read]').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const url = btn.getAttribute('data-read');
+        const ttl = btn.getAttribute('data-title') || 'Reader';
+        const meta = btn.getAttribute('data-meta') || '';
+        openReader(ttl, meta);
+        try{
+          const res = await fetch(url, {cache:'no-store'});
+          if(!res.ok) throw new Error(res.status);
+          const html = await res.text();
+          // Strip outer HTML if present, keep main text
+          const tmp = document.createElement('div'); tmp.innerHTML = html;
+          let main = tmp.querySelector('main, article, pre, body') || tmp;
+          rBody.textContent = main.textContent.trim() || html; // show plain text for reliable formatting
+        }catch(e){
+          rBody.textContent = 'Could not load chapter. Make sure "'+url+'" is in the same folder.';
+        }
       });
-    }
-    setUI(false);
-  })();
-  </script>
+    });
 
-  <!-- Chat demo + Praise carousel + Modals -->
-  <script>
-  (function(){
+    /* ===== SECRETARY CHAT (demo) ===== */
+    const fab = document.getElementById('secFab');
+    const panel = document.getElementById('secPanel');
     const logEl = document.getElementById('chatLog');
-    const nameEl = document.getElementById('chatName');
     const inputEl = document.getElementById('chatInput');
     const sendBtn = document.getElementById('chatSend');
-    const clearBtn = document.getElementById('chatClear');
-    const KEY='forged-chat';
-
+    const KEY='forged-support';
     function render(){
       logEl.innerHTML='';
       const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
       for (const m of messages){
         const b = document.createElement('div');
         b.className='bubble'+(m.me?' me':'');
-        b.innerHTML = `<div style="color:#9aa">${m.from} • ${m.time}</div><div>${m.text}</div>`;
+        b.innerHTML = `<div style="color:#9aa; font-size:.85rem">${m.time}</div><div>${m.text}</div>`;
         logEl.appendChild(b);
       }
       logEl.scrollTop = logEl.scrollHeight;
     }
-    function add(from, text, me=false){
+    function add(text, me=false){
       const t = new Date();
       const time = t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
       const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
-      messages.push({from, text, me, time});
+      messages.push({text, me, time});
       localStorage.setItem(KEY, JSON.stringify(messages.slice(-200)));
       render();
     }
     if (!localStorage.getItem(KEY)){
-      add('Forged Support','Welcome to GE & LE Studios! Ask about the books, rights, trailers, or production. 🔥');
-      add('Forged Support','Tip: Share your email in the Contact section if you need a formal response.');
-      add('Forged Support','Hello! How can we help? 🔥');
+      add('Welcome to GE & LE Studios. I’m your Forged Support secretary. Ask about chapters, rights, or press. 🔥');
+      add('For direct replies, email: gumworld1976@yahoo.com.au');
     }
     function send(){
-      const name = (nameEl.value||'You').trim();
       const text = (inputEl.value||'').trim();
       if (!text) return;
-      add(name, text, true);
+      add(text, true);
       inputEl.value='';
+      setTimeout(()=> add('Thanks! We’ll reply by email if needed. 🔥'), 400);
     }
     sendBtn.addEventListener('click', send);
     inputEl.addEventListener('keydown', e=>{ if (e.key==='Enter'){ e.preventDefault(); send(); }});
-    clearBtn.addEventListener('click', ()=>{ localStorage.removeItem(KEY); render(); });
+    fab.addEventListener('click', ()=> panel.classList.toggle('open'));
     render();
-
-    // Praise carousel nav (keyboard + buttons)
-    const track = document.getElementById('praiseTrack');
-    if(track){
-      const prev = track.parentElement.querySelector('.prev');
-      const next = track.parentElement.querySelector('.next');
-      function snap(dir){ track.scrollBy({left: dir * (track.getBoundingClientRect().width * 0.8), behavior:'smooth'}); }
-      prev.addEventListener('click', ()=>snap(-1));
-      next.addEventListener('click', ()=>snap(1));
-      track.setAttribute('tabindex','0');
-      track.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight') snap(1); if(e.key==='ArrowLeft') snap(-1); });
-    }
-
-    // Reader modals
-    function openOverlay(id){
-      const el = document.getElementById(id);
-      if(!el) return;
-      el.classList.add('open');
-      document.body.style.overflow='hidden';
-      el.focus();
-    }
-    function closeOverlay(target){
-      const el = target.closest('.overlay');
-      if(!el) return;
-      el.classList.remove('open');
-      document.body.style.overflow='';
-    }
-    document.querySelectorAll('[data-open]').forEach(btn=>{
-      btn.addEventListener('click', ()=> openOverlay(btn.getAttribute('data-open')));
-    });
-    document.querySelectorAll('[data-close]').forEach(btn=>{
-      btn.addEventListener('click', ()=> closeOverlay(btn));
-    });
-    document.querySelectorAll('.overlay').forEach(ov=>{
-      ov.addEventListener('click', (e)=>{ if(e.target === ov) closeOverlay(ov); });
-      ov.setAttribute('tabindex','-1');
-    });
-    window.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape'){
-        document.querySelectorAll('.overlay.open').forEach(ov=>{ ov.classList.remove('open'); document.body.style.overflow=''; });
-      }
-    });
   })();
   </script>
-
-  <!-- Floating AI Secretary (Lumin) -->
-  <button class="assistant-fab" id="assistantFab" aria-label="Open Secretary Lumin">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 2a7 7 0 0 0-7 7v2.1A4 4 0 0 0 3 15v1a4 4 0 0 0 4 4h1l1.5 2.5a1 1 0 0 0 1.7 0L12.7 20H17a4 4 0 0 0 4-4v-1a4 4 0 0 0-2-3.45V9a7 7 0 0 0-7-7Zm0 2a5 5 0 0 1 5 5v2h-1a1 1 0 0 0-1 1v1.5a1.5 1.5 0 0 1-3 0V10a2 2 0 0 0-2-2H7a5 5 0 0 1 5-4Z"/>
-    </svg>
-  </button>
-  <div class="assistant" id="assistant" role="dialog" aria-modal="false" aria-labelledby="assistantTitle">
-    <header>
-      <strong id="assistantTitle">Secretary Lumin</strong>
-      <span style="margin-left:auto; color:var(--muted); font-size:.9rem">At your service</span>
-    </header>
-    <div class="log" id="assistantLog" aria-live="polite"></div>
-    <div class="suggest" id="assistantSuggest">
-      <button data-fill="Can I request the full Book 2 manuscript?">Request Book 2</button>
-      <button data-fill="How do I license rights for adaptation?">Rights & Licensing</button>
-      <button data-fill="Where can I download the press kit?">Press Kit</button>
-      <button data-fill="Email GE&LE directly please.">Email Us</button>
-    </div>
-    <div class="composer">
-      <input id="assistantInput" placeholder="Type a message to Lumin..." />
-      <button id="assistantSend" class="btn">Send</button>
-    </div>
-  </div>
-
-  <!-- PWA: service worker (optional) -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(()=>{});
-      });
-    }
-  </script>
-
-  <!-- Secretary Lumin logic -->
-  <script>
-    (function(){
-      const fab = document.getElementById('assistantFab');
-      const box = document.getElementById('assistant');
-      const log = document.getElementById('assistantLog');
-      const input = document.getElementById('assistantInput');
-      const send = document.getElementById('assistantSend');
-      const suggest = document.getElementById('assistantSuggest');
-      const KEY='forged-lumin';
-
-      function render(){
-        log.innerHTML='';
-        const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
-        for(const m of messages){
-          const d = document.createElement('div');
-          d.className='msg'+(m.me?' me':'');
-          d.innerHTML = `<div style="color:#9aa; font-size:.85rem">${m.from} • ${m.time}</div><div>${m.text}</div>`;
-          log.appendChild(d);
-        }
-        log.scrollTop = log.scrollHeight;
-      }
-      function add(from, text, me=false){
-        const t = new Date();
-        const time = t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-        const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
-        messages.push({from, text, me, time});
-        localStorage.setItem(KEY, JSON.stringify(messages.slice(-200)));
-        render();
-      }
-
-      if(!localStorage.getItem(KEY)){
-        add('Lumin','Welcome! I can help with manuscripts, rights, and press materials. 🔥');
-        add('Lumin','Need a direct line? Email us: <a href="mailto:gumworld1976@yahoo.com.au">gumworld1976@yahoo.com.au</a>');
-      }
-
-      fab.addEventListener('click', ()=>{
-        box.classList.toggle('open');
-        if(box.classList.contains('open')) { render(); input.focus(); }
-      });
-
-      send.addEventListener('click', handleSend);
-      input.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); handleSend(); }});
-      suggest.addEventListener('click', e=>{
-        const v = e.target?.getAttribute?.('data-fill');
-        if(v){ input.value = v; input.focus(); }
-      });
-
-      function handleSend(){
-        const text = (input.value||'').trim();
-        if(!text) return;
-        add('You', text, true);
-        input.value='';
-
-        // simple keyword routing
-        const lc = text.toLowerCase();
-        if(lc.includes('press')){
-          add('Lumin','Grab the press kit here: <a href="/press/GE-LE_Studios_The-Forged-Saga_PressKit.zip" download>Download ZIP</a>');
-        }else if(lc.includes('email')){
-          add('Lumin','Email us anytime at <a href="mailto:gumworld1976@yahoo.com.au">gumworld1976@yahoo.com.au</a> — we’ll reply swiftly.');
-        }else if(lc.includes('rights') || lc.includes('license')){
-          add('Lumin','For rights & licensing, share your territory/medium and timeline via <a href="mailto:gumworld1976@yahoo.com.au">email</a> or the contact form below.');
-        }else if(lc.includes('manuscript') || lc.includes('book 2')){
-          add('Lumin','Happy to send the full manuscript. Please include your name, role, and request via <a href="#contact">the contact form</a> or email us directly.');
-        }else{
-          add('Lumin','Noted! I’ll route this to the GE & LE inbox. You can also reach us at <a href="mailto:gumworld1976@yahoo.com.au">gumworld1976@yahoo.com.au</a>.');
-        }
-      }
-    })();
-  </script>
 </body>
-  </html>
+                  </html>
