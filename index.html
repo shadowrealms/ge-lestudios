@@ -39,6 +39,7 @@
       --banner:#15120d; --banner-border:#46361b;
       --bubble:#101012; --bubble-border:#2a2a2f;
       --overlay:rgba(0,0,0,.7);
+      --glow: rgba(226,199,120,.55);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -51,6 +52,7 @@
         radial-gradient(1000px 500px at 110% -20%, rgba(202,163,90,.06), transparent 60%),
         var(--bg);
       line-height:1.65;
+      overflow-x:hidden; /* stop sideways scrolling */
     }
     img{max-width:100%; display:block}
     a{color:var(--gold-2); text-decoration:none}
@@ -87,7 +89,23 @@
     }
     nav{display:flex; align-items:center; gap:14px; padding:10px 0}
     .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.06em}
-    .brand img{width:40px; height:40px; border-radius:50%; box-shadow:0 0 14px rgba(202,163,90,.35)}
+    .brand img{
+      width:40px; height:40px; border-radius:50%;
+      box-shadow:0 0 14px rgba(202,163,90,.35), inset 0 0 0 1px rgba(202,163,90,.25);
+      transition:transform .25s ease, box-shadow .35s ease;
+    }
+    .brand:hover img{
+      transform:translateY(-1px) scale(1.05);
+      box-shadow:
+        0 0 16px var(--glow),
+        0 0 34px rgba(202,163,90,.35),
+        inset 0 0 0 1px rgba(202,163,90,.45);
+      animation:pulseGlow 1600ms ease-in-out infinite;
+    }
+    @keyframes pulseGlow{
+      0%,100%{filter:drop-shadow(0 0 0 var(--glow))}
+      50%{filter:drop-shadow(0 0 12px var(--glow))}
+    }
     .links{margin-left:auto; display:flex; gap:18px; flex-wrap:wrap}
     .links a{padding:8px 10px; opacity:.85}
     .links a:hover{color:var(--gold-2); opacity:1}
@@ -214,6 +232,38 @@
       font-family:ui-serif, Georgia, "Times New Roman", serif; line-height:1.75; font-size:1.02rem; color:#f0f0f0;
     }
     .inline-cta{display:flex; gap:10px; flex-wrap:wrap}
+
+    /* Floating AI Secretary (Lumin) */
+    .assistant-fab{
+      position:fixed; right:18px; bottom:18px; z-index:9999;
+      width:56px; height:56px; border-radius:999px; border:1px solid rgba(226,199,120,.25);
+      background:radial-gradient(180px 80px at 70% -40%, rgba(226,199,120,.25), transparent), #121214;
+      box-shadow:0 10px 28px rgba(0,0,0,.5), 0 0 18px rgba(202,163,90,.18);
+      display:grid; place-items:center; cursor:pointer;
+    }
+    .assistant-fab:hover{border-color:var(--gold-2)}
+    .assistant-fab svg{width:26px; height:26px; opacity:.9}
+
+    .assistant{
+      position:fixed; right:18px; bottom:86px; z-index:9999; width:min(380px, 92vw);
+      background:#0f0f11; border:1px solid rgba(226,199,120,.25); border-radius:14px;
+      box-shadow:0 22px 60px rgba(0,0,0,.7); display:none; overflow:hidden;
+    }
+    .assistant.open{display:grid; grid-template-rows:auto 1fr auto}
+    .assistant header{
+      padding:12px 14px; border-bottom:1px solid rgba(226,199,120,.12);
+      display:flex; align-items:center; gap:10px; background:linear-gradient(180deg,#121214,#0f0f11);
+    }
+    .assistant header strong{letter-spacing:.06em}
+    .assistant .log{max-height:300px; overflow:auto; display:grid; gap:8px; padding:12px}
+    .assistant .msg{background:#101012; border:1px solid var(--bubble-border); border-radius:12px; padding:10px}
+    .assistant .msg.me{margin-left:auto; background:#131318; border-color:#2f2f36}
+    .assistant .composer{display:flex; gap:8px; padding:12px; border-top:1px solid rgba(226,199,120,.12)}
+    .assistant .composer input{flex:1; min-width:0; padding:10px 12px; border-radius:10px; border:1px solid var(--ring); background:#121216; color:var(--text)}
+    .assistant .composer button{padding:10px 12px; border-radius:10px; border:1px solid var(--ring); background:#1a1a1e; color:var(--text); font-weight:700}
+    .assistant .suggest{display:flex; gap:8px; flex-wrap:wrap; padding:10px 12px; border-top:1px solid rgba(226,199,120,.08)}
+    .assistant .suggest button{padding:6px 10px; border-radius:999px; border:1px solid var(--ring); background:#16161a; color:var(--text); cursor:pointer; font-size:.85rem}
+    .assistant .suggest button:hover{border-color:var(--gold-2); color:var(--gold-2)}
   </style>
 </head>
 <body>
@@ -236,7 +286,7 @@
   <header>
     <div class="wrap">
       <nav aria-label="Primary">
-        <div class="brand">
+        <div class="brand" title="Forged in Faith">
           <img src="gl-logo.jpg" alt="GE & LE Studios logo" />
           <span>GE &amp; LE STUDIOS</span>
         </div>
@@ -578,6 +628,7 @@
             <input type="hidden" name="_subject" value="Forged Saga — Inquiry" />
             <input type="hidden" name="_captcha" value="false" />
           </form>
+          <p class="subtitle" style="margin:.6rem 0 0">Direct: <a href="mailto:gumworld1976@yahoo.com.au">gumworld1976@yahoo.com.au</a></p>
         </div>
       </div>
     </section>
@@ -586,7 +637,7 @@
   <footer>
     <div class="wrap" style="text-align:center; padding-top:22px">
       <img src="gl-logo.jpg" alt="GE & LE Studios" style="width:68px; height:68px; border-radius:50%; box-shadow:0 0 18px rgba(202,163,90,.3)" loading="lazy" decoding="async" />
-      <p style="margin:10px 0 6px;">© 2025 GE &amp; LE Studios</p>
+      <p style="margin:10px 0 6px;">© 2025 GE &amp; LE Studios • Equal Ownership — GE &amp; LE</p>
       <small>Forged in Faith • The Forged Saga</small>
     </div>
   </footer>
@@ -834,6 +885,30 @@ And the mist had begun to remember.
   })();
   </script>
 
+  <!-- Floating AI Secretary (Lumin) -->
+  <button class="assistant-fab" id="assistantFab" aria-label="Open Secretary Lumin">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2a7 7 0 0 0-7 7v2.1A4 4 0 0 0 3 15v1a4 4 0 0 0 4 4h1l1.5 2.5a1 1 0 0 0 1.7 0L12.7 20H17a4 4 0 0 0 4-4v-1a4 4 0 0 0-2-3.45V9a7 7 0 0 0-7-7Zm0 2a5 5 0 0 1 5 5v2h-1a1 1 0 0 0-1 1v1.5a1.5 1.5 0 0 1-3 0V10a2 2 0 0 0-2-2H7a5 5 0 0 1 5-4Z"/>
+    </svg>
+  </button>
+  <div class="assistant" id="assistant" role="dialog" aria-modal="false" aria-labelledby="assistantTitle">
+    <header>
+      <strong id="assistantTitle">Secretary Lumin</strong>
+      <span style="margin-left:auto; color:var(--muted); font-size:.9rem">At your service</span>
+    </header>
+    <div class="log" id="assistantLog" aria-live="polite"></div>
+    <div class="suggest" id="assistantSuggest">
+      <button data-fill="Can I request the full Book 2 manuscript?">Request Book 2</button>
+      <button data-fill="How do I license rights for adaptation?">Rights & Licensing</button>
+      <button data-fill="Where can I download the press kit?">Press Kit</button>
+      <button data-fill="Email GE&LE directly please.">Email Us</button>
+    </div>
+    <div class="composer">
+      <input id="assistantInput" placeholder="Type a message to Lumin..." />
+      <button id="assistantSend" class="btn">Send</button>
+    </div>
+  </div>
+
   <!-- PWA: service worker (optional) -->
   <script>
     if ('serviceWorker' in navigator) {
@@ -842,5 +917,76 @@ And the mist had begun to remember.
       });
     }
   </script>
+
+  <!-- Secretary Lumin logic -->
+  <script>
+    (function(){
+      const fab = document.getElementById('assistantFab');
+      const box = document.getElementById('assistant');
+      const log = document.getElementById('assistantLog');
+      const input = document.getElementById('assistantInput');
+      const send = document.getElementById('assistantSend');
+      const suggest = document.getElementById('assistantSuggest');
+      const KEY='forged-lumin';
+
+      function render(){
+        log.innerHTML='';
+        const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
+        for(const m of messages){
+          const d = document.createElement('div');
+          d.className='msg'+(m.me?' me':'');
+          d.innerHTML = `<div style="color:#9aa; font-size:.85rem">${m.from} • ${m.time}</div><div>${m.text}</div>`;
+          log.appendChild(d);
+        }
+        log.scrollTop = log.scrollHeight;
+      }
+      function add(from, text, me=false){
+        const t = new Date();
+        const time = t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+        const messages = JSON.parse(localStorage.getItem(KEY)||'[]');
+        messages.push({from, text, me, time});
+        localStorage.setItem(KEY, JSON.stringify(messages.slice(-200)));
+        render();
+      }
+
+      if(!localStorage.getItem(KEY)){
+        add('Lumin','Welcome! I can help with manuscripts, rights, and press materials. 🔥');
+        add('Lumin','Need a direct line? Email us: <a href="mailto:gumworld1976@yahoo.com.au">gumworld1976@yahoo.com.au</a>');
+      }
+
+      fab.addEventListener('click', ()=>{
+        box.classList.toggle('open');
+        if(box.classList.contains('open')) { render(); input.focus(); }
+      });
+
+      send.addEventListener('click', handleSend);
+      input.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); handleSend(); }});
+      suggest.addEventListener('click', e=>{
+        const v = e.target?.getAttribute?.('data-fill');
+        if(v){ input.value = v; input.focus(); }
+      });
+
+      function handleSend(){
+        const text = (input.value||'').trim();
+        if(!text) return;
+        add('You', text, true);
+        input.value='';
+
+        // simple keyword routing
+        const lc = text.toLowerCase();
+        if(lc.includes('press')){
+          add('Lumin','Grab the press kit here: <a href="/press/GE-LE_Studios_The-Forged-Saga_PressKit.zip" download>Download ZIP</a>');
+        }else if(lc.includes('email')){
+          add('Lumin','Email us anytime at <a href="mailto:gumworld1976@yahoo.com.au">gumworld1976@yahoo.com.au</a> — we’ll reply swiftly.');
+        }else if(lc.includes('rights') || lc.includes('license')){
+          add('Lumin','For rights & licensing, share your territory/medium and timeline via <a href="mailto:gumworld1976@yahoo.com.au">email</a> or the contact form below.');
+        }else if(lc.includes('manuscript') || lc.includes('book 2')){
+          add('Lumin','Happy to send the full manuscript. Please include your name, role, and request via <a href="#contact">the contact form</a> or email us directly.');
+        }else{
+          add('Lumin','Noted! I’ll route this to the GE & LE inbox. You can also reach us at <a href="mailto:gumworld1976@yahoo.com.au">gumworld1976@yahoo.com.au</a>.');
+        }
+      }
+    })();
+  </script>
 </body>
-            </html>
+  </html>
